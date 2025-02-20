@@ -1,0 +1,6 @@
+{
+    "name": "tetris",
+    "dependencies": [
+        "raylib"
+    ]
+}
