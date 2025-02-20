@@ -4,6 +4,8 @@ project(tetris VERSION 0.1.0 LANGUAGES C CXX)
 list(APPEND CMAKE_PREFIX_PATH "${CMAKE_SOURCE_DIR}/vcpkg_installed/x64-windows")
 
 find_package(raylib CONFIG REQUIRED)
+
+include_directories(include)
 file(GLOB SOURCES "src/*.cpp")
 add_executable(tetris ${SOURCES})
 
