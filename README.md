@@ -23,10 +23,21 @@ Follow these steps to set up and run the project:
 
     This will install the necessary packages, including [raylib](https://www.raylib.com/). Once completed, a folder named `/vcpkg_installed` should appear at the top level of the project.
 
-4. **Configure CMake** 
-- Press `Ctrl + Shift + P` to open the Command Palette.
-- Search for `CMake: Configure` and select it to begin configuration.
-5. **Build the Project**:  
-- Press `Ctrl + Shift + P` to open the Command Palette.
-- Search for `CMake: Build` and select it to begin configuration.
-6. **Run the Game**: Click the small play button at the bottom bar in VS Code to execute the game.
+4. **Configure CMake** : Run the following command to create a CMake configuration: 
+
+    ```
+    cmake -S . -B out/build/tetris -G "Ninja"
+    ```
+
+5. **Build the Project**: Navigate to the build directory and run Ninja to compile the project: 
+
+    ```
+    cd out/build/tetris
+    ninja
+    ```
+
+6. **Run the Game**: Once the build is complete, run the executable: 
+
+    ```
+    ./tetris.exe
+    ```
