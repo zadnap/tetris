@@ -26,18 +26,17 @@ Follow these steps to set up and run the project:
 4. **Configure CMake** : Run the following command to create a CMake configuration: 
 
     ```
-    cmake -S . -B out/build/tetris -G "Ninja"
+    cmake --preset tetris-debug
     ```
 
-5. **Build the Project**: Navigate to the build directory and run Ninja to compile the project: 
+5. **Build the Project**: Run Ninja to compile the project: 
 
     ```
-    cd out/build/tetris
-    ninja
+    ninja -C out/build/tetris-debug
     ```
 
-6. **Run the Game**: Once the build is complete, run the executable: 
+6. **Run the Project**: Once the build is complete, run the executable: 
 
     ```
-    ./tetris.exe
+    ./out/build/tetris-debug/tetris_main.exe
     ```
