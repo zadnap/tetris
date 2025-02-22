@@ -15,27 +15,19 @@ Follow these steps to set up and run the project:
 
 1. **Fork and Clone**: Fork this repository to your remote account and clone it onto your local machine. 
 2. **Open in VS Code**: Launch [Visual Studio Code](https://code.visualstudio.com/) and open the cloned repository.
-3. **Install Dependencies**: Open the terminal at the project's root directory and run:
-
-    ```
-    vcpkg install
-    ```
-
-    This will install the necessary packages, including [raylib](https://www.raylib.com/). Once completed, a folder named `/vcpkg_installed` should appear at the top level of the project.
-
-4. **Configure CMake** : Run the following command to create a CMake configuration: 
+3. **Configure CMake** : Run the following command to create a CMake configuration: 
 
     ```
     cmake --preset tetris-debug
     ```
 
-5. **Build the Project**: Run Ninja to compile the project: 
+4. **Build the Project**: Run Ninja to compile the project: 
 
     ```
     ninja -C out/build/tetris-debug
     ```
 
-6. **Run the Project**: Once the build is complete, run the executable: 
+5. **Run the Project**: Once the build is complete, run the executable: 
 
     ```
     ./out/build/tetris-debug/tetris_main.exe
