@@ -21,14 +21,28 @@ Follow these steps to set up and run the project:
     cmake --preset tetris-debug
     ```
 
-4. **Build the Project**: Run Ninja to compile the project: 
+4. **Build**: Run Ninja to compile the project: 
 
     ```
     ninja -C out/build/tetris-debug
     ```
 
-5. **Run the Project**: Once the build is complete, run the executable: 
+5. **Run**: Once the build is complete, run the following to see the project in action:
 
     ```
     ./out/build/tetris-debug/tetris_main.exe
+    ```
+
+6. **Test**: Once the build is complete, run the following: 
+
+    - To test all units:
+
+    ```
+    ctest --test-dir ./out/build/tetris-debug/tests
+    ```
+
+    - To test specific unit: (e.g., `GridTest`, `TetrominoTest`):
+
+    ```
+    ctest --test-dir ./out/build/tetris-debug/tests -R <TestName>
     ```
