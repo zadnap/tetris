@@ -10,10 +10,10 @@ private:
     vector<vector<int>> grid;
     bool isCompleteRow(int row) const;
     void clearRow(int row);
-    void moveRowsDown(int row, int numRows);
+    void moveRowsDown(int row, int distance);
 
 public:
-    Grid(int rows = 20, int cols = 10);
+    Grid(int numRows = 20, int numCols = 10);
     void clearGrid();
     bool isWithinBounds(int row, int col) const;
     int getCell(int row, int col) const;

@@ -3,10 +3,10 @@
 #include <stdexcept>
 using namespace std;
 
-Grid::Grid(int rows, int cols)
+Grid::Grid(int numRows, int numCols)
 {
-    numRows = rows;
-    numCols = cols;
+    this->numRows = numRows;
+    this->numCols = numCols;
     clearGrid();
 }
 
@@ -65,7 +65,7 @@ int Grid::clearCompleteRows()
 bool Grid::isCompleteRow(int row) const
 {
     for (int col = 0; col < numCols; col++)
-        if (getCell(row, col) == 0)
+        if (grid[row][col] == 0)
             return false;
     return true;
 }
