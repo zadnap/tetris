@@ -5,12 +5,12 @@ using namespace std;
 
 extern const Color TEXT_COLOR;
 extern const Color BACKGROUND_COLOR;
-extern const Color TETROMINO_I_COLOR;
-extern const Color TETROMINO_O_COLOR;
-extern const Color TETROMINO_T_COLOR;
-extern const Color TETROMINO_L_COLOR;
-extern const Color TETROMINO_J_COLOR;
-extern const Color TETROMINO_S_COLOR;
-extern const Color TETROMINO_Z_COLOR;
+extern const Color I_TETROMINO_COLOR;
+extern const Color O_TETROMINO_COLOR;
+extern const Color T_TETROMINO_COLOR;
+extern const Color L_TETROMINO_COLOR;
+extern const Color J_TETROMINO_COLOR;
+extern const Color S_TETROMINO_COLOR;
+extern const Color Z_TETROMINO_COLOR;
 
 vector<Color> getCellColors();
