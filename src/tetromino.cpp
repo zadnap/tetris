@@ -24,7 +24,12 @@ void Tetromino::move(int rowDelta, int colDelta)
     colOffset += colDelta;
 }
 
-void Tetromino::rotate()
+void Tetromino::rotateRight()
 {
     rotationState = (rotationState + 1) % rotations.size();
+}
+
+void Tetromino::rotateLeft()
+{
+    rotationState = (rotationState - 1 + rotations.size()) % rotations.size();
 }
