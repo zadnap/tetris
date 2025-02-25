@@ -41,7 +41,7 @@ Follow these steps to set up and run the project:
     ctest --test-dir ./out/build/tetris-debug/tests
     ```
 
-    - To test specific unit: (e.g., `GridTest`, `TetrominoTest`):
+    - To test specific unit: (e.g., `BoardTest`, `TetrominoTest`):
 
     ```
     ctest --test-dir ./out/build/tetris-debug/tests -R <TestName>

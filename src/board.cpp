@@ -1,33 +1,33 @@
-#include "../include/grid.h"
+#include "../include/board.h"
 #include <vector>
 #include <stdexcept>
 using namespace std;
 
-Grid::Grid(int numRows, int numCols)
+Board::Board(int numRows, int numCols)
 {
     this->numRows = numRows;
     this->numCols = numCols;
-    clearGrid();
+    clearBoard();
 }
 
-void Grid::clearGrid()
+void Board::clearBoard()
 {
     grid = vector<vector<int>>(numRows, vector<int>(numCols, 0));
 }
 
-bool Grid::isWithinBounds(int row, int col) const
+bool Board::isWithinBounds(int row, int col) const
 {
     return row >= 0 && row < numRows && col >= 0 && col < numCols;
 }
 
-int Grid::getCell(int row, int col) const
+int Board::getCell(int row, int col) const
 {
     if (!isWithinBounds(row, col))
         throw out_of_range("You are touching outside the grid!");
     return grid[row][col];
 }
 
-void Grid::setCell(int row, int col, int value)
+void Board::setCell(int row, int col, int value)
 {
     if (!isWithinBounds(row, col))
         throw out_of_range("You are touching outside the grid!");
@@ -36,14 +36,14 @@ void Grid::setCell(int row, int col, int value)
     grid[row][col] = value;
 }
 
-bool Grid::canPlace(int row, int col) const
+bool Board::canPlace(int row, int col) const
 {
     if (!isWithinBounds(row, col))
         throw out_of_range("You are touching outside the grid!");
     return grid[row][col] == 0;
 }
 
-int Grid::clearCompleteRows()
+int Board::clearCompleteRows()
 {
     int rowsCleared = 0;
 
@@ -62,19 +62,19 @@ int Grid::clearCompleteRows()
 
     return rowsCleared;
 }
-bool Grid::isCompleteRow(int row) const
+bool Board::isCompleteRow(int row) const
 {
     for (int col = 0; col < numCols; col++)
         if (grid[row][col] == 0)
             return false;
     return true;
 }
-void Grid::clearRow(int row)
+void Board::clearRow(int row)
 {
     for (int col = 0; col < numCols; col++)
         setCell(row, col, 0);
 }
-void Grid::moveRowsDown(int row, int distance)
+void Board::moveRowsDown(int row, int distance)
 {
     if (row + distance >= numRows)
         return;
@@ -86,7 +86,7 @@ void Grid::moveRowsDown(int row, int distance)
     }
 }
 
-bool Grid::isFull() const
+bool Board::isFull() const
 {
     for (int col = 0; col < numCols; col++)
     {

@@ -2,7 +2,7 @@
 #include <vector>
 using namespace std;
 
-class Grid
+class Board
 {
 private:
     int numRows;
@@ -13,8 +13,8 @@ private:
     void moveRowsDown(int row, int distance);
 
 public:
-    Grid(int numRows = 20, int numCols = 10);
-    void clearGrid();
+    Board(int numRows = 20, int numCols = 10);
+    void clearBoard();
     bool isWithinBounds(int row, int col) const;
     int getCell(int row, int col) const;
     void setCell(int row, int col, int value);
