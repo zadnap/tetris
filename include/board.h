@@ -14,6 +14,8 @@ private:
 
 public:
     Board(int numRows = 20, int numCols = 10);
+    int getNumRows();
+    int getNumCols();
     void clearBoard();
     bool isWithinBounds(int row, int col) const;
     int getCell(int row, int col) const;

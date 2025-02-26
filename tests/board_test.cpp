@@ -17,6 +17,9 @@ protected:
 
 TEST_F(BoardTest, Initialization)
 {
+    ASSERT_EQ(board.getNumRows(), defaultNumRows);
+    ASSERT_EQ(board.getNumCols(), defaultNumCols);
+
     for (int i = 0; i < defaultNumRows; i++)
     {
         for (int j = 0; j < defaultNumCols; j++)
@@ -24,6 +27,17 @@ TEST_F(BoardTest, Initialization)
             EXPECT_EQ(board.getCell(i, j), 0);
         }
     }
+}
+
+TEST_F(BoardTest, InitializationWithSpecificSize)
+{
+    int specificRows = 23;
+    int specificCols = 8;
+
+    board = Board(specificRows, specificCols);
+
+    ASSERT_EQ(board.getNumRows(), specificRows);
+    ASSERT_EQ(board.getNumCols(), specificCols);
 }
 
 TEST_F(BoardTest, IsWithinBounds)

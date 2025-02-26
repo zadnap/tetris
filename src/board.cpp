@@ -10,6 +10,16 @@ Board::Board(int numRows, int numCols)
     clearBoard();
 }
 
+int Board::getNumRows()
+{
+    return numRows;
+}
+
+int Board::getNumCols()
+{
+    return numCols;
+}
+
 void Board::clearBoard()
 {
     grid = vector<vector<int>>(numRows, vector<int>(numCols, 0));
