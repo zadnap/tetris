@@ -15,8 +15,12 @@ public:
     Tetromino();
     int id;
     map<int, vector<Position>> rotations;
+    void setInitialPosition(int row = 0, int col = 0);
     vector<Position> getCellPositions();
-    void move(int rowDelta, int colDelta);
+    void moveLeft();
+    void moveRight();
+    void moveDown();
+    void moveUp();
     void rotateRight();
     void rotateLeft();
 };

@@ -2,9 +2,14 @@
 
 Tetromino::Tetromino()
 {
-    rowOffset = 0;
-    colOffset = 0;
+    setInitialPosition();
     rotationState = 0;
+}
+
+void Tetromino::setInitialPosition(int row, int col)
+{
+    rowOffset = row;
+    colOffset = col;
 }
 
 vector<Position> Tetromino::getCellPositions()
@@ -18,10 +23,24 @@ vector<Position> Tetromino::getCellPositions()
     return cellPositions;
 }
 
-void Tetromino::move(int rowDelta, int colDelta)
+void Tetromino::moveLeft()
 {
-    rowOffset += rowDelta;
-    colOffset += colDelta;
+    colOffset--;
+}
+
+void Tetromino::moveRight()
+{
+    colOffset++;
+}
+
+void Tetromino::moveDown()
+{
+    rowOffset--;
+}
+
+void Tetromino::moveUp()
+{
+    rowOffset++;
 }
 
 void Tetromino::rotateRight()
