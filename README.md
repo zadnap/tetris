@@ -35,13 +35,13 @@ Follow these steps to set up and run the project:
 
 6. **Test**: Once the build is complete, run the following: 
 
-    - To test all units:
+    - To run all tests:
 
     ```
     ctest --test-dir ./out/build/tetris-debug/tests
     ```
 
-    - To test specific unit: (e.g., `BoardTest`, `TetrominoTest`):
+    - To run specific test: (e.g., `BoardTest`, `TetrominoTest`):
 
     ```
     ctest --test-dir ./out/build/tetris-debug/tests -R <TestName>
