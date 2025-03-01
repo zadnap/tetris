@@ -78,7 +78,7 @@ TEST_F(BoardTest, TouchOutSide)
 {
     EXPECT_THROW(board.getCell(-1, -1), out_of_range);
     EXPECT_THROW(board.setCell(999, 999, 7), out_of_range);
-    EXPECT_THROW(board.canPlace(999, 999), out_of_range);
+    EXPECT_FALSE(board.canPlace(999, 999));
 }
 
 TEST_F(BoardTest, ClearCompleteRow)

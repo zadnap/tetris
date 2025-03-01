@@ -48,9 +48,7 @@ void Board::setCell(int row, int col, int value)
 
 bool Board::canPlace(int row, int col) const
 {
-    if (!isWithinBounds(row, col))
-        throw out_of_range("You are touching outside the grid!");
-    return grid[row][col] == 0;
+    return isWithinBounds(row, col) && grid[row][col] == 0;
 }
 
 int Board::clearCompleteRows()
