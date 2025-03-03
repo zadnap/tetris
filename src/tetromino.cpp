@@ -35,12 +35,12 @@ void Tetromino::moveRight()
 
 void Tetromino::moveDown()
 {
-    rowOffset--;
+    rowOffset++;
 }
 
 void Tetromino::moveUp()
 {
-    rowOffset++;
+    rowOffset--;
 }
 
 void Tetromino::rotateRight()

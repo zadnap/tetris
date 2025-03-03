@@ -92,7 +92,7 @@ TEST_F(TetrominoTest, MoveDown)
 
     for (size_t i = 0; i < initialPositions.size(); i++)
     {
-        EXPECT_EQ(movedPositions[i].row, initialPositions[i].row - 1);
+        EXPECT_EQ(movedPositions[i].row, initialPositions[i].row + 1);
     }
 }
 
@@ -107,7 +107,7 @@ TEST_F(TetrominoTest, MoveUp)
 
     for (size_t i = 0; i < initialPositions.size(); i++)
     {
-        EXPECT_EQ(movedPositions[i].row, initialPositions[i].row + 1);
+        EXPECT_EQ(movedPositions[i].row, initialPositions[i].row - 1);
     }
 }
 
