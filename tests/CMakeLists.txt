@@ -16,3 +16,13 @@ add_executable(tetromino_test
 )
 target_link_libraries(tetromino_test PRIVATE GTest::gtest_main)
 gtest_discover_tests(tetromino_test)
+
+add_executable(game_integration_test 
+    game_integration_test.cpp 
+    ${CMAKE_SOURCE_DIR}/src/game.cpp 
+    ${CMAKE_SOURCE_DIR}/src/board.cpp 
+    ${CMAKE_SOURCE_DIR}/src/position.cpp
+    ${CMAKE_SOURCE_DIR}/src/tetromino.cpp
+)
+target_link_libraries(game_integration_test PRIVATE GTest::gtest_main)
+gtest_discover_tests(game_integration_test)

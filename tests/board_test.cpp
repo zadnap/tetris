@@ -15,7 +15,7 @@ protected:
     Board board;
 };
 
-TEST_F(BoardTest, Initialization)
+TEST_F(BoardTest, Initialize)
 {
     ASSERT_EQ(board.getNumRows(), defaultNumRows);
     ASSERT_EQ(board.getNumCols(), defaultNumCols);
@@ -29,7 +29,7 @@ TEST_F(BoardTest, Initialization)
     }
 }
 
-TEST_F(BoardTest, InitializationWithSpecificSize)
+TEST_F(BoardTest, InitializeWithSpecificSize)
 {
     int specificRows = 23;
     int specificCols = 8;

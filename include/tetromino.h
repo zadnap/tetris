@@ -17,6 +17,7 @@ public:
     map<int, vector<Position>> rotations;
     void setInitialPosition(int row = 0, int col = 0);
     vector<Position> getCellPositions();
+    int getRotationState();
     void moveLeft();
     void moveRight();
     void moveDown();

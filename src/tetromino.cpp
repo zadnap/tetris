@@ -23,6 +23,11 @@ vector<Position> Tetromino::getCellPositions()
     return cellPositions;
 }
 
+int Tetromino::getRotationState()
+{
+    return rotationState;
+}
+
 void Tetromino::moveLeft()
 {
     colOffset--;
