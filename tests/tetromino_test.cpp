@@ -51,10 +51,13 @@ TEST_F(TetrominoTest, GetCellPositions)
     }
 }
 
-TEST_F(TetrominoTest, MoveLeft)
+TEST_F(TetrominoTest, Move)
 {
     vector<Position> initialPositions = iTetromino.getCellPositions();
-    iTetromino.moveLeft();
+
+    int rowShift = 8;
+    int colShift = 23;
+    iTetromino.move(rowShift, colShift);
 
     vector<Position> movedPositions = iTetromino.getCellPositions();
 
@@ -62,52 +65,8 @@ TEST_F(TetrominoTest, MoveLeft)
 
     for (size_t i = 0; i < initialPositions.size(); i++)
     {
-        EXPECT_EQ(movedPositions[i].col, initialPositions[i].col - 1);
-    }
-}
-
-TEST_F(TetrominoTest, MoveRight)
-{
-    vector<Position> initialPositions = iTetromino.getCellPositions();
-    iTetromino.moveRight();
-
-    vector<Position> movedPositions = iTetromino.getCellPositions();
-
-    ASSERT_EQ(initialPositions.size(), movedPositions.size());
-
-    for (size_t i = 0; i < initialPositions.size(); i++)
-    {
-        EXPECT_EQ(movedPositions[i].col, initialPositions[i].col + 1);
-    }
-}
-
-TEST_F(TetrominoTest, MoveDown)
-{
-    vector<Position> initialPositions = iTetromino.getCellPositions();
-    iTetromino.moveDown();
-
-    vector<Position> movedPositions = iTetromino.getCellPositions();
-
-    ASSERT_EQ(initialPositions.size(), movedPositions.size());
-
-    for (size_t i = 0; i < initialPositions.size(); i++)
-    {
-        EXPECT_EQ(movedPositions[i].row, initialPositions[i].row + 1);
-    }
-}
-
-TEST_F(TetrominoTest, MoveUp)
-{
-    vector<Position> initialPositions = iTetromino.getCellPositions();
-    iTetromino.moveUp();
-
-    vector<Position> movedPositions = iTetromino.getCellPositions();
-
-    ASSERT_EQ(initialPositions.size(), movedPositions.size());
-
-    for (size_t i = 0; i < initialPositions.size(); i++)
-    {
-        EXPECT_EQ(movedPositions[i].row, initialPositions[i].row - 1);
+        EXPECT_EQ(movedPositions[i].row, initialPositions[i].row + rowShift);
+        EXPECT_EQ(movedPositions[i].col, initialPositions[i].col + colShift);
     }
 }
 

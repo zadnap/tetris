@@ -11,7 +11,7 @@ public:
         rotations[1] = {Position(0, 2), Position(1, 2), Position(2, 2), Position(3, 2)};
         rotations[2] = {Position(2, 0), Position(2, 1), Position(2, 2), Position(2, 3)};
         rotations[3] = {Position(0, 1), Position(1, 1), Position(2, 1), Position(3, 1)};
-        setInitialPosition(0, 3);
+        move(-1, 3);
     }
 };
 
@@ -22,7 +22,7 @@ public:
     {
         id = 2;
         rotations[0] = {Position(0, 0), Position(0, 1), Position(1, 0), Position(1, 1)};
-        setInitialPosition(0, 4);
+        move(0, 4);
     }
 };
 
@@ -36,7 +36,7 @@ public:
         rotations[1] = {Position(0, 1), Position(1, 1), Position(1, 2), Position(2, 1)};
         rotations[2] = {Position(1, 0), Position(1, 1), Position(1, 2), Position(2, 1)};
         rotations[3] = {Position(0, 1), Position(1, 0), Position(1, 1), Position(2, 1)};
-        setInitialPosition(0, 3);
+        move(0, 3);
     }
 };
 
@@ -50,7 +50,7 @@ public:
         rotations[1] = {Position(0, 1), Position(1, 1), Position(2, 1), Position(2, 2)};
         rotations[2] = {Position(1, 0), Position(1, 1), Position(1, 2), Position(2, 0)};
         rotations[3] = {Position(0, 0), Position(0, 1), Position(1, 1), Position(2, 1)};
-        setInitialPosition(0, 3);
+        move(0, 3);
     }
 };
 
@@ -64,7 +64,7 @@ public:
         rotations[1] = {Position(0, 1), Position(0, 2), Position(1, 1), Position(2, 1)};
         rotations[2] = {Position(1, 0), Position(1, 1), Position(1, 2), Position(2, 2)};
         rotations[3] = {Position(0, 1), Position(1, 1), Position(2, 0), Position(2, 1)};
-        setInitialPosition(0, 3);
+        move(0, 3);
     }
 };
 
@@ -78,7 +78,7 @@ public:
         rotations[1] = {Position(0, 1), Position(1, 1), Position(1, 2), Position(2, 2)};
         rotations[2] = {Position(1, 1), Position(1, 2), Position(2, 0), Position(2, 1)};
         rotations[3] = {Position(0, 0), Position(1, 0), Position(1, 1), Position(2, 1)};
-        setInitialPosition(0, 3);
+        move(0, 3);
     }
 };
 
@@ -92,6 +92,6 @@ public:
         rotations[1] = {Position(0, 2), Position(1, 1), Position(1, 2), Position(2, 1)};
         rotations[2] = {Position(1, 0), Position(1, 1), Position(2, 1), Position(2, 2)};
         rotations[3] = {Position(0, 1), Position(1, 0), Position(1, 1), Position(2, 0)};
-        setInitialPosition(0, 3);
+        move(0, 3);
     }
 };

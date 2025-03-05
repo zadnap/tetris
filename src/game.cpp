@@ -80,21 +80,21 @@ bool Game::isCurrentTetroOverlapping()
 
 void Game::moveTetrominoLeft()
 {
-    currentTetromino.moveLeft();
+    currentTetromino.move(0, -1);
     if (isCurrentTetroOutsideGrid() || isCurrentTetroOverlapping())
-        currentTetromino.moveRight();
+        currentTetromino.move(0, 1);
 }
 
 void Game::moveTetrominoRight()
 {
-    currentTetromino.moveRight();
+    currentTetromino.move(0, 1);
     if (isCurrentTetroOutsideGrid() || isCurrentTetroOverlapping())
-        currentTetromino.moveLeft();
+        currentTetromino.move(0, -1);
 }
 
 void Game::moveTetrominoDown()
 {
-    currentTetromino.moveDown();
+    currentTetromino.move(1, 0);
     if (isCurrentTetroOutsideGrid() || isCurrentTetroOverlapping())
-        currentTetromino.moveUp();
+        currentTetromino.move(-1, 0);
 }
