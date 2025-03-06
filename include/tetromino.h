@@ -15,9 +15,10 @@ public:
     Tetromino();
     int id;
     map<int, vector<Position>> rotations;
+    map<int, vector<Position>> wallkickOffsets;
     vector<Position> getCellPositions();
     int getRotationState() const;
     void move(int rowShift, int colShift);
-    void rotateRight();
-    void rotateLeft();
+    int rotateRight();
+    int rotateLeft();
 };

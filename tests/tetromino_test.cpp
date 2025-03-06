@@ -74,10 +74,11 @@ TEST_F(TetrominoTest, RotateRight)
 {
     vector<Position> expected = {Position(0, 4), Position(1, 4), Position(1, 5), Position(2, 4)};
 
-    tTetromino.rotateRight();
+    int prevRotateState = tTetromino.rotateRight();
 
     vector<Position> rotatedPositions = tTetromino.getCellPositions();
 
+    ASSERT_EQ(prevRotateState, 0);
     ASSERT_EQ(expected.size(), rotatedPositions.size());
     for (size_t i = 0; i < rotatedPositions.size(); i++)
     {
@@ -90,10 +91,11 @@ TEST_F(TetrominoTest, RotateLeft)
 {
     vector<Position> expected = {Position(0, 3), Position(0, 4), Position(1, 4), Position(2, 4)};
 
-    lTetromino.rotateLeft();
+    int prevRotateState = lTetromino.rotateLeft();
 
     vector<Position> rotatedPositions = lTetromino.getCellPositions();
 
+    ASSERT_EQ(prevRotateState, 0);
     ASSERT_EQ(expected.size(), rotatedPositions.size());
     for (size_t i = 0; i < rotatedPositions.size(); i++)
     {

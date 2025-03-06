@@ -5,6 +5,14 @@ Tetromino::Tetromino()
     rowOffset = 0;
     colOffset = 0;
     rotationState = 0;
+    wallkickOffsets[0] = {{0, 0}, {-1, 0}, {-1, 1}, {0, -2}, {-1, -2}};
+    wallkickOffsets[1] = {{0, 0}, {1, 0}, {1, -1}, {0, 2}, {1, 2}};
+    wallkickOffsets[2] = {{0, 0}, {1, 0}, {1, -1}, {0, 2}, {1, 2}};
+    wallkickOffsets[3] = {{0, 0}, {-1, 0}, {-1, 1}, {0, -2}, {-1, -2}};
+    wallkickOffsets[4] = {{0, 0}, {1, 0}, {1, 1}, {0, -2}, {1, -2}};
+    wallkickOffsets[5] = {{0, 0}, {-1, 0}, {-1, -1}, {0, 2}, {-1, 2}};
+    wallkickOffsets[6] = {{0, 0}, {-1, 0}, {-1, -1}, {0, 2}, {-1, 2}};
+    wallkickOffsets[7] = {{0, 0}, {1, 0}, {1, 1}, {0, -2}, {1, -2}};
 }
 
 vector<Position> Tetromino::getCellPositions()
@@ -29,12 +37,16 @@ void Tetromino::move(int rowShift, int colShift)
     colOffset += colShift;
 }
 
-void Tetromino::rotateRight()
+int Tetromino::rotateRight()
 {
+    int prevRotationState = rotationState;
     rotationState = (rotationState + 1) % rotations.size();
+    return prevRotationState;
 }
 
-void Tetromino::rotateLeft()
+int Tetromino::rotateLeft()
 {
+    int prevRotationState = rotationState;
     rotationState = (rotationState - 1 + rotations.size()) % rotations.size();
+    return prevRotationState;
 }

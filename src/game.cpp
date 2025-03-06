@@ -98,3 +98,56 @@ void Game::moveTetrominoDown()
     if (isCurrentTetroOutsideGrid() || isCurrentTetroOverlapping())
         currentTetromino.move(-1, 0);
 }
+
+bool Game::tryWallkick(int from, int to)
+{
+    int kickIndex = getKickIndex(from, to);
+    vector<Position> trials = currentTetromino.wallkickOffsets[kickIndex];
+
+    for (Position offset : trials)
+    {
+        currentTetromino.move(offset.row, offset.col);
+
+        if (!isCurrentTetroOutsideGrid() && !isCurrentTetroOverlapping())
+            return true;
+
+        currentTetromino.move(-offset.row, -offset.col);
+    }
+
+    return false;
+}
+
+int Game::getKickIndex(int from, int to)
+{
+    if (from == 0 && to == 1)
+        return 0;
+    if (from == 1 && to == 0)
+        return 1;
+    if (from == 1 && to == 2)
+        return 2;
+    if (from == 2 && to == 1)
+        return 3;
+    if (from == 2 && to == 3)
+        return 4;
+    if (from == 3 && to == 2)
+        return 5;
+    if (from == 3 && to == 0)
+        return 6;
+    if (from == 0 && to == 3)
+        return 7;
+    return -1;
+}
+
+void Game::rotateTetrominoLeft()
+{
+    int prevState = currentTetromino.rotateLeft();
+    if (!tryWallkick(prevState, currentTetromino.getRotationState()))
+        currentTetromino.rotateRight();
+}
+
+void Game::rotateTetrominoRight()
+{
+    int prevState = currentTetromino.rotateRight();
+    if (!tryWallkick(prevState, currentTetromino.getRotationState()))
+        currentTetromino.rotateLeft();
+}

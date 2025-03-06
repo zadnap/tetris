@@ -153,3 +153,91 @@ TEST_F(GameIntegrationTest, DetectCollisionOnRight)
 
     EXPECT_EQ(getRightMostCol(), lastCol - 1);
 }
+
+TEST_F(GameIntegrationTest, RotateOnLeftEdge)
+{
+    game.rotateTetrominoRight();
+    int steps = getLeftMostCol();
+
+    while (steps >= 0)
+    {
+        game.moveTetrominoLeft();
+        steps--;
+    }
+    game.rotateTetrominoLeft();
+
+    EXPECT_GE(getLeftMostCol(), 0);
+}
+
+TEST_F(GameIntegrationTest, RotateOnRightEdge)
+{
+    int numCols = game.getBoard().getNumCols();
+    game.rotateTetrominoLeft();
+    int steps = numCols - getRightMostCol();
+
+    while (steps >= 0)
+    {
+        game.moveTetrominoRight();
+        steps--;
+    }
+    game.rotateTetrominoRight();
+
+    EXPECT_LE(getRightMostCol(), numCols - 1);
+}
+
+TEST_F(GameIntegrationTest, RotateOnBottomEdge)
+{
+    int numRows = game.getBoard().getNumRows();
+    int steps = numRows - getDownMostRow();
+
+    while (steps >= 0)
+    {
+        game.moveTetrominoDown();
+        steps--;
+    }
+    game.rotateTetrominoRight();
+
+    EXPECT_LE(getDownMostRow(), numRows - 1);
+}
+
+TEST_F(GameIntegrationTest, DetectCollisionOnRotatingLeft)
+{
+    game.getBoard().setCell(0, 0, 1);
+    game.getBoard().setCell(1, 0, 1);
+    game.getBoard().setCell(2, 0, 1);
+    game.getBoard().setCell(3, 0, 1);
+
+    game.rotateTetrominoRight();
+    int steps = getLeftMostCol();
+
+    while (steps >= 0)
+    {
+        game.moveTetrominoDown();
+        steps--;
+    }
+    game.rotateTetrominoLeft();
+
+    EXPECT_GE(getLeftMostCol(), 1);
+}
+
+TEST_F(GameIntegrationTest, DetectCollisionOnRotatingRight)
+{
+    int lastCol = game.getBoard().getNumCols() - 1;
+
+    game.getBoard().setCell(0, lastCol, 1);
+    game.getBoard().setCell(1, lastCol, 1);
+    game.getBoard().setCell(2, lastCol, 1);
+    game.getBoard().setCell(3, lastCol, 1);
+
+    game.rotateTetrominoLeft();
+    int steps = lastCol - getRightMostCol();
+
+    while (steps >= 0)
+    {
+        game.moveTetrominoRight();
+        steps--;
+    }
+    game.rotateTetrominoRight();
+
+    EXPECT_LE(getRightMostCol(), lastCol - 1);
+}

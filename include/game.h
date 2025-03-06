@@ -15,6 +15,8 @@ private:
     Tetromino getRandomTetromino();
     bool isCurrentTetroOutsideGrid();
     bool isCurrentTetroOverlapping();
+    int getKickIndex(int from, int to);
+    bool tryWallkick(int from, int to);
 
 public:
     Game();
@@ -26,4 +28,6 @@ public:
     void moveTetrominoLeft();
     void moveTetrominoRight();
     void moveTetrominoDown();
+    void rotateTetrominoLeft();
+    void rotateTetrominoRight();
 };
