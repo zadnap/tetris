@@ -17,6 +17,8 @@ private:
     bool isCurrentTetroOverlapping();
     int getKickIndex(int from, int to);
     bool tryWallkick(int from, int to);
+    void lockTetromino();
+    void updateScore(int rowsCleared);
 
 public:
     Game();
@@ -30,4 +32,5 @@ public:
     void moveTetrominoDown();
     void rotateTetrominoLeft();
     void rotateTetrominoRight();
+    void hardDropTetromino();
 };

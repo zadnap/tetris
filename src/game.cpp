@@ -96,7 +96,10 @@ void Game::moveTetrominoDown()
 {
     currentTetromino.move(1, 0);
     if (isCurrentTetroOutsideGrid() || isCurrentTetroOverlapping())
+    {
         currentTetromino.move(-1, 0);
+        lockTetromino();
+    }
 }
 
 bool Game::tryWallkick(int from, int to)
@@ -150,4 +153,61 @@ void Game::rotateTetrominoRight()
     int prevState = currentTetromino.rotateRight();
     if (!tryWallkick(prevState, currentTetromino.getRotationState()))
         currentTetromino.rotateLeft();
+}
+
+void Game::lockTetromino()
+{
+    vector<Position> cellPositions = currentTetromino.getCellPositions();
+    for (Position cellPos : cellPositions)
+    {
+        if (!board.isWithinBounds(cellPos.row, cellPos.col) || !board.canPlace(cellPos.row, cellPos.col))
+        {
+            gameOver = true;
+            return;
+        }
+        board.setCell(cellPos.row, cellPos.col, currentTetromino.id);
+    }
+
+    if (board.isFull())
+    {
+        gameOver = true;
+        return;
+    }
+
+    updateScore(board.clearCompleteRows());
+    currentTetromino = nextTetromino;
+    nextTetromino = getRandomTetromino();
+}
+
+void Game::hardDropTetromino()
+{
+    while (true)
+    {
+        currentTetromino.move(1, 0);
+        if (isCurrentTetroOutsideGrid() || isCurrentTetroOverlapping())
+        {
+            currentTetromino.move(-1, 0);
+            lockTetromino();
+            break;
+        }
+    }
+}
+
+void Game::updateScore(int rowsCleared)
+{
+    switch (rowsCleared)
+    {
+    case 1:
+        score += 100;
+        break;
+    case 2:
+        score += 300;
+        break;
+    case 3:
+        score += 500;
+        break;
+    case 4:
+        score += 800;
+        break;
+    }
 }

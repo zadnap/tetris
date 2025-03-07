@@ -85,36 +85,23 @@ TEST_F(GameIntegrationTest, StopTetrominoAtRightEdge)
     EXPECT_EQ(getRightMostCol(), lastCol);
 }
 
-TEST_F(GameIntegrationTest, StopTetrominoAtBottomEdge)
+TEST_F(GameIntegrationTest, LockTetromino)
 {
-    int lastRow = game.getBoard().getNumRows() - 1;
-    int steps = lastRow - getDownMostRow();
+    Tetromino currentTetromino = game.getCurrentTetromino();
+    int tetrominoId = currentTetromino.id;
 
-    while (steps >= 0)
+    while (true)
     {
         game.moveTetrominoDown();
-        steps--;
+        if (game.getCurrentTetromino().id != tetrominoId)
+            break;
+        currentTetromino = game.getCurrentTetromino();
     }
 
-    EXPECT_EQ(getDownMostRow(), lastRow);
-}
-
-TEST_F(GameIntegrationTest, DetectCollisionAtBottom)
-{
-    int lastRow = game.getBoard().getNumRows() - 1;
-
-    for (int i = 0; i < game.getBoard().getNumCols(); i++)
-        game.getBoard().setCell(lastRow, i, 1);
-
-    int steps = lastRow - getDownMostRow();
-
-    while (steps >= 0)
+    for (Position cellPos : currentTetromino.getCellPositions())
     {
-        game.moveTetrominoDown();
-        steps--;
+        EXPECT_EQ(game.getBoard().getCell(cellPos.row, cellPos.col), tetrominoId);
     }
-
-    EXPECT_EQ(getDownMostRow(), lastRow - 1);
 }
 
 TEST_F(GameIntegrationTest, DetectCollisionOnLeft)
@@ -240,4 +227,50 @@ TEST_F(GameIntegrationTest, DetectCollisionOnRotatingRight)
     game.rotateTetrominoRight();
 
     EXPECT_LE(getRightMostCol(), lastCol - 1);
+}
+
+TEST_F(GameIntegrationTest, HardDropTetromino)
+{
+    Tetromino currentTetromino = game.getCurrentTetromino();
+    vector<Position> initCellPositions = currentTetromino.getCellPositions();
+
+    int distance = game.getBoard().getNumRows() - getDownMostRow() - 1;
+
+    game.hardDropTetromino();
+
+    for (Position cellPos : initCellPositions)
+    {
+        EXPECT_EQ(game.getBoard().getCell(cellPos.row + distance, cellPos.col), currentTetromino.id);
+    }
+}
+
+TEST_F(GameIntegrationTest, UpdateScoreAfterClearingRows)
+{
+    Board &board = game.getBoard();
+    int numCols = board.getNumCols();
+    int numRows = board.getNumRows();
+
+    for (int i = 0; i < numCols; i++)
+        board.setCell(numRows - 1, i, 1);
+
+    game.hardDropTetromino();
+
+    EXPECT_EQ(game.getScore(), 100);
+}
+
+TEST_F(GameIntegrationTest, DetectGameOver)
+{
+    Board &board = game.getBoard();
+    int numRows = board.getNumRows();
+    int numCols = board.getNumCols();
+
+    for (int i = 0; i < numRows; i++)
+    {
+        for (int j = 0; j < numCols; j++)
+            board.setCell(i, j, 1);
+    }
+
+    game.hardDropTetromino();
+
+    EXPECT_TRUE(game.isGameOver());
 }
