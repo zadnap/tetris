@@ -1,7 +1,8 @@
 {
   "name": "tetris",
   "dependencies": [
+    "gtest",
     "raylib",
-    "gtest"
+    "glfw3"
   ]
 }

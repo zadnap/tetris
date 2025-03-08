@@ -7,8 +7,9 @@ include(CTest)
 include_directories(include)
 
 find_package(raylib CONFIG REQUIRED)
+find_package(glfw3 CONFIG REQUIRED)
 file(GLOB SOURCES "src/*.cpp")
 add_executable(tetris_main ${SOURCES})
-target_link_libraries(tetris_main PRIVATE raylib)
+target_link_libraries(tetris_main PRIVATE raylib glfw winmm)
 
 add_subdirectory(tests)
