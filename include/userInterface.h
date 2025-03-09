@@ -5,10 +5,11 @@ class UserInterface
 {
 private:
     Game &game;
+    void drawGrid();
+    void drawCurrentTetromino();
 
 public:
     UserInterface(Game &game);
     void initWindow();
-    void drawGrid();
-    void drawCurrentTetromino();
+    void drawScreen();
 };

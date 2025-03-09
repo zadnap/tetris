@@ -9,7 +9,15 @@ UserInterface::UserInterface(Game &game) : game(game) {}
 void UserInterface::initWindow()
 {
     Board &board = game.getBoard();
-    InitWindow(board.getNumCols() * CELL_SIZE, board.getNumRows() * CELL_SIZE, "Tetris");
+    int gridWidth = board.getNumCols() * CELL_SIZE;
+    int gridHeight = board.getNumRows() * CELL_SIZE;
+    InitWindow(gridWidth, gridHeight, "Tetris");
+}
+
+void UserInterface::drawScreen()
+{
+    drawGrid();
+    drawCurrentTetromino();
 }
 
 void UserInterface::drawGrid()
