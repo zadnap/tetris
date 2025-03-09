@@ -27,6 +27,14 @@ Board &Game::getBoard()
     return board;
 }
 
+int generateRandomNumber(int min, int max)
+{
+    static random_device rd;
+    static mt19937 gen(rd());
+    uniform_int_distribution<int> dist(min, max);
+    return dist(gen);
+}
+
 Tetromino Game::getRandomTetromino()
 {
     if (tetrominoes.empty())
@@ -34,7 +42,7 @@ Tetromino Game::getRandomTetromino()
         tetrominoes = getTetrominoes();
     }
 
-    int randomIndex = rand() % tetrominoes.size();
+    int randomIndex = generateRandomNumber(0, tetrominoes.size() - 1);
     Tetromino randomTetromino = tetrominoes[randomIndex];
     tetrominoes.erase(tetrominoes.begin() + randomIndex);
 
