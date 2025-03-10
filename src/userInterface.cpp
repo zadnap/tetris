@@ -2,7 +2,8 @@
 #include "../include/colors.h"
 #include <raylib.h>
 
-const int CELL_SIZE = 30;
+const float CELL_SIZE = 30;
+const float GRID_GAP = 2;
 
 UserInterface::UserInterface(Game &game) : game(game) {}
 
@@ -29,12 +30,13 @@ void UserInterface::drawGrid()
     {
         for (int col = 0; col < board.getNumCols(); col++)
         {
-            DrawRectangle(
-                col * CELL_SIZE + 1,
-                row * CELL_SIZE + 1,
-                CELL_SIZE - 1,
-                CELL_SIZE - 1,
-                cellColors[board.getCell(row, col)]);
+            Rectangle cell = {
+                col * CELL_SIZE + GRID_GAP,
+                row * CELL_SIZE + GRID_GAP,
+                CELL_SIZE - GRID_GAP,
+                CELL_SIZE - GRID_GAP,
+            };
+            DrawRectangleRounded(cell, 0.2f, 10, cellColors[board.getCell(row, col)]);
         }
     }
 }
@@ -47,11 +49,12 @@ void UserInterface::drawCurrentTetromino()
 
     for (size_t i = 0; i < tetrominoPositions.size(); i++)
     {
-        DrawRectangle(
-            tetrominoPositions[i].col * CELL_SIZE + 1,
-            tetrominoPositions[i].row * CELL_SIZE + 1,
-            CELL_SIZE - 1,
-            CELL_SIZE - 1,
-            cellColors[currentTetromino.id]);
+        Rectangle cell = {
+            tetrominoPositions[i].col * CELL_SIZE + GRID_GAP,
+            tetrominoPositions[i].row * CELL_SIZE + GRID_GAP,
+            CELL_SIZE - GRID_GAP,
+            CELL_SIZE - GRID_GAP,
+        };
+        DrawRectangleRounded(cell, 0.2f, 10, cellColors[currentTetromino.id]);
     }
 }
