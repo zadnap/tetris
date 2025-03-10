@@ -10,6 +10,8 @@ steady_clock::time_point lockTimer;
 Game::Game()
 {
     score = 0;
+    level = 0;
+    totalClearedRows = 0;
     gameOver = false;
     board = Board();
     tetrominoes = getTetrominoes();
@@ -25,6 +27,11 @@ bool Game::isGameOver()
 int Game::getScore()
 {
     return score;
+}
+
+int Game::getLevel()
+{
+    return level;
 }
 
 Board &Game::getBoard()
@@ -197,7 +204,12 @@ void Game::lockTetromino()
         return;
     }
 
-    updateScore(board.clearCompleteRows());
+    int rowsCleared = board.clearCompleteRows();
+    totalClearedRows += rowsCleared;
+
+    updateScore(rowsCleared);
+    updateLevel();
+
     currentTetromino = nextTetromino;
     nextTetromino = getRandomTetromino();
 }
@@ -233,4 +245,9 @@ void Game::updateScore(int rowsCleared)
         score += 800;
         break;
     }
+}
+
+void Game::updateLevel()
+{
+    level = totalClearedRows / 10;
 }

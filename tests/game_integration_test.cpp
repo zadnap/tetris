@@ -52,6 +52,7 @@ TEST_F(GameIntegrationTest, Initialize)
 {
     EXPECT_FALSE(game.isGameOver());
     EXPECT_EQ(game.getScore(), 0);
+    EXPECT_EQ(game.getLevel(), 0);
     EXPECT_GE(game.getCurrentTetromino().id, 0);
     EXPECT_LE(game.getCurrentTetromino().id, 7);
     EXPECT_GE(game.getNextTetromino().id, 0);
@@ -256,6 +257,30 @@ TEST_F(GameIntegrationTest, UpdateScoreAfterClearingRows)
     game.hardDropTetromino();
 
     EXPECT_EQ(game.getScore(), 100);
+}
+
+TEST_F(GameIntegrationTest, IncreaseLevelAfterTenRowsCleared)
+{
+    Board &board = game.getBoard();
+    int numCols = board.getNumCols();
+    int numRows = board.getNumRows();
+
+    int times = 3;
+    while (times > 0)
+    {
+        for (int i = 16; i < numRows; i++)
+        {
+            for (int j = 0; j < numCols; j++)
+            {
+                board.setCell(i, j, 1);
+            }
+        }
+
+        game.hardDropTetromino();
+        times--;
+    }
+
+    EXPECT_EQ(game.getLevel(), 1);
 }
 
 TEST_F(GameIntegrationTest, DetectGameOver)

@@ -6,6 +6,8 @@ class Game
 {
 private:
     int score;
+    int level;
+    int totalClearedRows;
     bool gameOver;
     Board board;
     vector<Tetromino> tetrominoes;
@@ -19,11 +21,13 @@ private:
     bool tryWallkick(int from, int to);
     void lockTetromino();
     void updateScore(int rowsCleared);
+    void updateLevel();
 
 public:
     Game();
     bool isGameOver();
     int getScore();
+    int getLevel();
     Board &getBoard();
     Tetromino getCurrentTetromino();
     Tetromino getNextTetromino();
