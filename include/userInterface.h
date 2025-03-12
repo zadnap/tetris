@@ -13,6 +13,7 @@ private:
     float sidebarWidth;
     float textBlockHeight;
     float fontSize;
+    float blockPadding;
     void drawGrid();
     void drawCurrentTetromino();
     void drawTextBlock(float offsetX, float offsetY, string label, string content);

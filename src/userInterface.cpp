@@ -11,6 +11,7 @@ UserInterface::UserInterface(Game &game) : game(game)
     margin = 30;
     textBlockHeight = 90;
     fontSize = 20;
+    blockPadding = 15;
 }
 
 void UserInterface::initWindow()
@@ -31,6 +32,7 @@ void UserInterface::drawScreen()
     drawCurrentTetromino();
     drawTextBlock(gridWidth + margin * 2, margin, "Score", to_string(game.getScore()));
     drawTextBlock(gridWidth + margin * 2, margin * 1.5 + textBlockHeight, "Level", to_string(game.getLevel()));
+    drawNextTetromino();
 }
 
 void UserInterface::drawGrid()
@@ -73,8 +75,6 @@ void UserInterface::drawCurrentTetromino()
 
 void UserInterface::drawTextBlock(float offsetX, float offsetY, string label, string content)
 {
-    float textBlockPadding = 20;
-
     Rectangle scoreBlock = {
         offsetX,
         offsetY,
@@ -86,17 +86,59 @@ void UserInterface::drawTextBlock(float offsetX, float offsetY, string label, st
 
     int textBlockLabelWidth = MeasureText(label.c_str(), fontSize);
     float labelX = offsetX + (scoreBlock.width - textBlockLabelWidth) / 2;
-    float labelY = offsetY + textBlockPadding;
+    float labelY = offsetY + blockPadding;
 
     DrawText(label.c_str(), labelX, labelY, fontSize, TEXT_COLOR);
 
     int textBlockContentWidth = MeasureText(content.c_str(), fontSize);
     float textBlockContentX = offsetX + (scoreBlock.width - textBlockContentWidth) / 2;
-    float textBlockContentY = offsetY + textBlockHeight - textBlockPadding * 2;
+    float textBlockContentY = offsetY + textBlockHeight - blockPadding * 2.5;
 
     DrawText(content.c_str(), textBlockContentX, textBlockContentY, fontSize, TEXT_COLOR);
 }
 
 void UserInterface::drawNextTetromino()
 {
+    float nextTetroX = gridWidth + margin * 2;
+    float nextTetroY = margin * 2 + textBlockHeight * 2;
+
+    float nextTetroHeight = 150;
+
+    Rectangle nextTetroBlock = {nextTetroX, nextTetroY, sidebarWidth, nextTetroHeight};
+    DrawRectangleRounded(nextTetroBlock, 0.1f, 10, GRID_COLOR);
+
+    string nextTetroLabel = "Incoming";
+    int nextTetroLabelWidth = MeasureText(nextTetroLabel.c_str(), fontSize);
+    float nextTetroLabelX = nextTetroX + (nextTetroBlock.width - nextTetroLabelWidth) / 2;
+    float nextTetroLabelY = nextTetroY + blockPadding;
+
+    DrawText(nextTetroLabel.c_str(), nextTetroLabelX, nextTetroLabelY, fontSize, TEXT_COLOR);
+
+    Tetromino currentTetromino = game.getNextTetromino();
+    vector<Position> cellPositions = currentTetromino.getCellPositions();
+
+    int leftMost = cellPositions[0].col;
+    int rightMost = cellPositions[0].col;
+    for (Position cellPos : cellPositions)
+    {
+        if (cellPos.col > rightMost)
+            rightMost = cellPos.col;
+        if (cellPos.col < leftMost)
+            leftMost = cellPos.col;
+    }
+
+    float tetroWidth = (rightMost - leftMost + 1) * cellSize;
+    float nextTetroImageX = nextTetroX + (nextTetroBlock.width - tetroWidth) / 2;
+    float nextTetroImageY = nextTetroY + fontSize + blockPadding * 3;
+
+    for (Position cellPos : cellPositions)
+    {
+        Rectangle cell = {
+            nextTetroImageX + (cellPos.col - leftMost) * cellSize + gridGap,
+            nextTetroImageY + cellPos.row * cellSize + gridGap,
+            cellSize - gridGap,
+            cellSize - gridGap,
+        };
+        DrawRectangleRounded(cell, 0.2f, 10, getCellColors()[currentTetromino.id]);
+    }
 }
