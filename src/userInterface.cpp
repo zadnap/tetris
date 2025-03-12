@@ -1,24 +1,36 @@
 #include "../include/userInterface.h"
 #include "../include/colors.h"
 #include <raylib.h>
+#include <string>
 
-const float CELL_SIZE = 30;
-const float GRID_GAP = 2;
-
-UserInterface::UserInterface(Game &game) : game(game) {}
+UserInterface::UserInterface(Game &game) : game(game)
+{
+    cellSize = 30;
+    gridGap = 2;
+    sidebarWidth = 150;
+    margin = 30;
+    textBlockHeight = 90;
+    fontSize = 20;
+}
 
 void UserInterface::initWindow()
 {
     Board &board = game.getBoard();
-    int gridWidth = board.getNumCols() * CELL_SIZE;
-    int gridHeight = board.getNumRows() * CELL_SIZE;
-    InitWindow(gridWidth, gridHeight, "Tetris");
+    gridWidth = board.getNumCols() * cellSize;
+    float gridHeight = board.getNumRows() * cellSize;
+
+    int windowWidth = gridWidth + margin * 3 + sidebarWidth;
+    int windowHeight = gridHeight + margin * 2;
+
+    InitWindow(windowWidth, windowHeight, "Tetris");
 }
 
 void UserInterface::drawScreen()
 {
     drawGrid();
     drawCurrentTetromino();
+    drawTextBlock(gridWidth + margin * 2, margin, "Score", to_string(game.getScore()));
+    drawTextBlock(gridWidth + margin * 2, margin * 1.5 + textBlockHeight, "Level", to_string(game.getLevel()));
 }
 
 void UserInterface::drawGrid()
@@ -31,10 +43,10 @@ void UserInterface::drawGrid()
         for (int col = 0; col < board.getNumCols(); col++)
         {
             Rectangle cell = {
-                col * CELL_SIZE + GRID_GAP,
-                row * CELL_SIZE + GRID_GAP,
-                CELL_SIZE - GRID_GAP,
-                CELL_SIZE - GRID_GAP,
+                margin + col * cellSize + gridGap,
+                margin + row * cellSize + gridGap,
+                cellSize - gridGap,
+                cellSize - gridGap,
             };
             DrawRectangleRounded(cell, 0.2f, 10, cellColors[board.getCell(row, col)]);
         }
@@ -50,11 +62,41 @@ void UserInterface::drawCurrentTetromino()
     for (size_t i = 0; i < tetrominoPositions.size(); i++)
     {
         Rectangle cell = {
-            tetrominoPositions[i].col * CELL_SIZE + GRID_GAP,
-            tetrominoPositions[i].row * CELL_SIZE + GRID_GAP,
-            CELL_SIZE - GRID_GAP,
-            CELL_SIZE - GRID_GAP,
+            margin + tetrominoPositions[i].col * cellSize + gridGap,
+            margin + tetrominoPositions[i].row * cellSize + gridGap,
+            cellSize - gridGap,
+            cellSize - gridGap,
         };
         DrawRectangleRounded(cell, 0.2f, 10, cellColors[currentTetromino.id]);
     }
+}
+
+void UserInterface::drawTextBlock(float offsetX, float offsetY, string label, string content)
+{
+    float textBlockPadding = 20;
+
+    Rectangle scoreBlock = {
+        offsetX,
+        offsetY,
+        sidebarWidth,
+        textBlockHeight,
+    };
+
+    DrawRectangleRounded(scoreBlock, 0.1f, 10, GRID_COLOR);
+
+    int textBlockLabelWidth = MeasureText(label.c_str(), fontSize);
+    float labelX = offsetX + (scoreBlock.width - textBlockLabelWidth) / 2;
+    float labelY = offsetY + textBlockPadding;
+
+    DrawText(label.c_str(), labelX, labelY, fontSize, TEXT_COLOR);
+
+    int textBlockContentWidth = MeasureText(content.c_str(), fontSize);
+    float textBlockContentX = offsetX + (scoreBlock.width - textBlockContentWidth) / 2;
+    float textBlockContentY = offsetY + textBlockHeight - textBlockPadding * 2;
+
+    DrawText(content.c_str(), textBlockContentX, textBlockContentY, fontSize, TEXT_COLOR);
+}
+
+void UserInterface::drawNextTetromino()
+{
 }

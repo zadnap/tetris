@@ -3,6 +3,7 @@
 #include "../include/inputHandler.h"
 #include "../include/userInterface.h"
 #include "../include/colors.h"
+#include <cmath>
 
 bool hasElapsedTime(double interval, double &lastUpdateTime);
 
@@ -23,7 +24,7 @@ int main()
 
         ClearBackground(BACKGROUND_COLOR);
 
-        if (hasElapsedTime(0.5, lastUpdateOnMovingDown))
+        if (hasElapsedTime(0.8 * pow(0.85, game.getLevel()), lastUpdateOnMovingDown))
             game.moveTetrominoDown();
         inputHandler.handleMovement();
 
