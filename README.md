@@ -27,13 +27,7 @@ Follow these steps to set up and run the project:
     ninja -C out/build/tetris-debug
     ```
 
-5. **Run**: Once the build is complete, run the following to see the project in action:
-
-    ```
-    ./out/build/tetris-debug/tetris_main.exe
-    ```
-
-6. **Test**: Once the build is complete, run the following: 
+5. **Test**: Once the build is complete, run the following: 
 
     - To run all tests:
 
@@ -45,4 +39,10 @@ Follow these steps to set up and run the project:
 
     ```
     ctest --test-dir ./out/build/tetris-debug/tests -R <TestName>
+    ```
+
+6. **Run**: Once the build is complete, run the following to see the project in action:
+
+    ```
+    ./out/build/tetris-debug/tetris_main.exe
     ```
