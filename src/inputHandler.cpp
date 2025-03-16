@@ -29,3 +29,15 @@ void InputHandler::handleMovement()
         break;
     }
 }
+
+void InputHandler::handleRestart()
+{
+    int keyPressed = GetKeyPressed();
+
+    switch (keyPressed)
+    {
+    case KEY_ENTER:
+        game.restart();
+        break;
+    }
+}

@@ -20,13 +20,13 @@ void UserInterface::initWindow()
     gridWidth = board.getNumCols() * cellSize;
     float gridHeight = board.getNumRows() * cellSize;
 
-    int windowWidth = gridWidth + margin * 3 + sidebarWidth;
-    int windowHeight = gridHeight + margin * 2;
+    windowWidth = gridWidth + margin * 3 + sidebarWidth;
+    windowHeight = gridHeight + margin * 2;
 
     InitWindow(windowWidth, windowHeight, "Tetris");
 }
 
-void UserInterface::drawScreen()
+void UserInterface::drawMainScreen()
 {
     drawGrid();
     drawCurrentTetromino();
@@ -141,4 +141,28 @@ void UserInterface::drawNextTetromino()
         };
         DrawRectangleRounded(cell, 0.2f, 10, getCellColors()[currentTetromino.id]);
     }
+}
+
+void UserInterface::drawGameOver()
+{
+    DrawRectangle(0, 0, windowWidth, windowHeight, OVERLAY_COLOR);
+
+    float textSpace = 30;
+    float gameOverY = (windowHeight - 4 * fontSize - 4 * textSpace) / 2;
+
+    string gameOverLabel = "Booyah!";
+    int gameOverLabelWidth = MeasureText(gameOverLabel.c_str(), fontSize + 5);
+    DrawText(gameOverLabel.c_str(), (windowWidth - gameOverLabelWidth) / 2, gameOverY, fontSize + 5, TEXT_COLOR);
+
+    string finalScore = "Your final score: " + to_string(game.getScore());
+    int finalScoreWidth = MeasureText(finalScore.c_str(), fontSize);
+    DrawText(finalScore.c_str(), (windowWidth - finalScoreWidth) / 2, gameOverY + textSpace, fontSize, GOLD);
+
+    string askToPlayAgain = "Play Again [Enter]";
+    int askToPlayAgainWidth = MeasureText(askToPlayAgain.c_str(), fontSize);
+    DrawText(askToPlayAgain.c_str(), (windowWidth - askToPlayAgainWidth) / 2, gameOverY + textSpace * 3, fontSize, GREEN);
+
+    string askToBackHome = "Back Home [Escape]";
+    int askToBackHomeWidth = MeasureText(askToBackHome.c_str(), fontSize);
+    DrawText(askToBackHome.c_str(), (windowWidth - askToBackHomeWidth) / 2, gameOverY + textSpace * 4, fontSize, RED);
 }

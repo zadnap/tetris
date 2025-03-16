@@ -6,6 +6,8 @@ class UserInterface
 {
 private:
     Game &game;
+    int windowWidth;
+    int windowHeight;
     float cellSize;
     float gridGap;
     float gridWidth;
@@ -22,5 +24,6 @@ private:
 public:
     UserInterface(Game &game);
     void initWindow();
-    void drawScreen();
+    void drawMainScreen();
+    void drawGameOver();
 };

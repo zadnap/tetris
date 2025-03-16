@@ -251,3 +251,15 @@ void Game::updateLevel()
 {
     level = totalClearedRows / 10;
 }
+
+void Game::restart()
+{
+    score = 0;
+    level = 0;
+    totalClearedRows = 0;
+    gameOver = false;
+    board.clearBoard();
+    tetrominoes = getTetrominoes();
+    currentTetromino = getRandomTetromino();
+    nextTetromino = getRandomTetromino();
+}

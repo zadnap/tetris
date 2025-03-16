@@ -299,3 +299,15 @@ TEST_F(GameIntegrationTest, DetectGameOver)
 
     EXPECT_TRUE(game.isGameOver());
 }
+
+TEST_F(GameIntegrationTest, Restart)
+{
+    game.restart();
+    EXPECT_FALSE(game.isGameOver());
+    EXPECT_EQ(game.getScore(), 0);
+    EXPECT_EQ(game.getLevel(), 0);
+    EXPECT_GE(game.getCurrentTetromino().id, 0);
+    EXPECT_LE(game.getCurrentTetromino().id, 7);
+    EXPECT_GE(game.getNextTetromino().id, 0);
+    EXPECT_LE(game.getNextTetromino().id, 7);
+}

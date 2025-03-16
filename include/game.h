@@ -37,4 +37,5 @@ public:
     void rotateTetrominoLeft();
     void rotateTetrominoRight();
     void hardDropTetromino();
+    void restart();
 };

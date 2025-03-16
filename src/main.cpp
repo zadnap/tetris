@@ -21,14 +21,20 @@ int main()
     while (!WindowShouldClose())
     {
         BeginDrawing();
-
         ClearBackground(BACKGROUND_COLOR);
+        userInterface.drawMainScreen();
 
-        if (hasElapsedTime(0.8 * pow(0.85, game.getLevel()), lastUpdateOnMovingDown))
-            game.moveTetrominoDown();
-        inputHandler.handleMovement();
-
-        userInterface.drawScreen();
+        if (game.isGameOver())
+        {
+            userInterface.drawGameOver();
+            inputHandler.handleRestart();
+        }
+        else
+        {
+            if (hasElapsedTime(0.8 * pow(0.85, game.getLevel()), lastUpdateOnMovingDown))
+                game.moveTetrominoDown();
+            inputHandler.handleMovement();
+        }
 
         EndDrawing();
     }
