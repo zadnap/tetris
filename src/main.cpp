@@ -16,7 +16,6 @@ int main()
     double lastUpdateOnMovingDown = 0;
 
     userInterface.initWindow();
-    SetTargetFPS(60);
 
     while (!WindowShouldClose())
     {
@@ -26,8 +25,8 @@ int main()
 
         if (game.isGameOver())
         {
-            userInterface.drawGameOver();
-            inputHandler.handleRestart();
+            userInterface.drawGameMenu();
+            inputHandler.handleGameMenu();
         }
         else
         {

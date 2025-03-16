@@ -9,5 +9,5 @@ private:
 public:
     InputHandler(Game &game);
     void handleMovement();
-    void handleRestart();
+    void handleGameMenu();
 };

@@ -22,6 +22,7 @@ private:
     void lockTetromino();
     void updateScore(int rowsCleared);
     void updateLevel();
+    void startNew();
 
 public:
     Game();

@@ -30,13 +30,13 @@ void InputHandler::handleMovement()
     }
 }
 
-void InputHandler::handleRestart()
+void InputHandler::handleGameMenu()
 {
     int keyPressed = GetKeyPressed();
 
     switch (keyPressed)
     {
-    case KEY_ENTER:
+    case KEY_R:
         game.restart();
         break;
     }

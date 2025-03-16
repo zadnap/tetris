@@ -24,6 +24,6 @@ private:
 public:
     UserInterface(Game &game);
     void initWindow();
+    void drawGameMenu();
     void drawMainScreen();
-    void drawGameOver();
 };

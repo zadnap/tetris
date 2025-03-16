@@ -9,6 +9,11 @@ steady_clock::time_point lockTimer;
 
 Game::Game()
 {
+    startNew();
+}
+
+void Game::startNew()
+{
     score = 0;
     level = 0;
     totalClearedRows = 0;
@@ -254,12 +259,5 @@ void Game::updateLevel()
 
 void Game::restart()
 {
-    score = 0;
-    level = 0;
-    totalClearedRows = 0;
-    gameOver = false;
-    board.clearBoard();
-    tetrominoes = getTetrominoes();
-    currentTetromino = getRandomTetromino();
-    nextTetromino = getRandomTetromino();
+    startNew();
 }
