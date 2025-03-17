@@ -20,15 +20,15 @@ Tetris is a classic puzzle game where players stack falling blocks (called tetro
 |---------|---------|
 | ![game main screen](./previews/main-screen.png) | ![game end screen](./previews/end-screen.png) |
 
-## Requirements
-Before setting up this project, ensure you have the following installed on your local machine:
-- [CMake](https://cmake.org/download/) – Build system generator.
-- [Ninja](https://github.com/ninja-build/ninja/releases) – Build system.
-- [C/C++ Extension Pack](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools-extension-pack) - Required for Visual Studio Code.
+## Development
+### Prerequisites
+1. **Build system generator**: [CMake](https://cmake.org/download/)
 
-## Development Setup
-Follow these steps to set up and run the project:
+2. **Build system**: [Ninja](https://github.com/ninja-build/ninja/releases)
 
+3. **VSCode Extensions**: [C/C++ Extension Pack](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools-extension-pack)
+
+### Installation & Build
 1. **Fork and Clone**: Fork this repository to your remote account and clone it onto your local machine. 
 2. **Open in VS Code**: Launch [Visual Studio Code](https://code.visualstudio.com/) and open the cloned repository.
 3. **Configure CMake** : Run the following command to create a CMake configuration: 
@@ -45,13 +45,13 @@ Follow these steps to set up and run the project:
 
 5. **Test**: Once the build is complete, run the following: 
 
-    - To run all tests:
+    Run all tests:
 
     ```
     ctest --test-dir ./out/build/tetris-debug/tests
     ```
 
-    - To run specific test: (e.g., `BoardTest`, `TetrominoTest`):
+    Run specific test: (e.g., `BoardTest`, `TetrominoTest`):
 
     ```
     ctest --test-dir ./out/build/tetris-debug/tests -R <TestName>
