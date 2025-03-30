@@ -1,8 +1,4 @@
 #include "../include/game.h"
-#include "tetrominoes.cpp"
-#include <random>
-#include <chrono>
-using namespace std::chrono;
 
 const int LOCK_DELAY = 500;
 steady_clock::time_point lockTimer;

@@ -1,6 +1,10 @@
 #pragma once
-#include "../include/board.h"
-#include "../include/tetromino.h"
+#include "board.h"
+#include "tetromino.h"
+#include "../src/tetrominoes.cpp"
+#include <random>
+#include <chrono>
+using namespace std::chrono;
 
 class Game
 {

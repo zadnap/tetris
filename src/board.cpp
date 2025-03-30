@@ -1,7 +1,4 @@
 #include "../include/board.h"
-#include <vector>
-#include <stdexcept>
-using namespace std;
 
 Board::Board(int numRows, int numCols)
 {

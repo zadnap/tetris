@@ -1,7 +1,4 @@
 #include "../include/colors.h"
-#include <raylib.h>
-#include <vector>
-using namespace std;
 
 const Color TEXT_COLOR = {255, 255, 255, 255};
 const Color BACKGROUND_COLOR = {33, 48, 89, 255};

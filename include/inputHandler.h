@@ -1,5 +1,6 @@
 #pragma once
 #include "game.h"
+#include <raylib.h>
 
 class InputHandler
 {

@@ -1,7 +1,4 @@
 #include "../include/userInterface.h"
-#include "../include/colors.h"
-#include <raylib.h>
-#include <string>
 
 UserInterface::UserInterface(Game &game) : game(game)
 {

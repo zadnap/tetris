@@ -1,5 +1,4 @@
 #include "../include/inputHandler.h"
-#include <raylib.h>
 
 InputHandler::InputHandler(Game &game) : game(game) {}
 

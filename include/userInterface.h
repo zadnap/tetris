@@ -1,6 +1,8 @@
 #pragma once
 #include "game.h"
+#include "colors.h"
 #include <string>
+#include <raylib.h>
 
 class UserInterface
 {

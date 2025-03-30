@@ -1,5 +1,6 @@
 #pragma once
 #include <vector>
+#include <stdexcept>
 using namespace std;
 
 class Board

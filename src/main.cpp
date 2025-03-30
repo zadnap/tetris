@@ -1,8 +1,8 @@
-#include <raylib.h>
 #include "../include/game.h"
 #include "../include/inputHandler.h"
 #include "../include/userInterface.h"
 #include "../include/colors.h"
+#include <raylib.h>
 #include <cmath>
 
 bool hasElapsedTime(double interval, double &lastUpdateTime);
