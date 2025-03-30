@@ -15,6 +15,9 @@ Tetris is a classic puzzle game where players stack falling blocks (called tetro
 5. **Scoring & Levels**: Higher scores for multi-line clears; the game speeds up as levels increase.
 6. **Game Over**: The game ends when the stack reaches the top with no moves left.
 
+## References
+- The tetromino rotation logic of the game is implemented using the kicktables of [SRS](https://harddrop.com/wiki/SRS) (Super Rotation System)
+
 ## Previews
 | <p align="center">Main Screen</p> | <p align="center">End Screen</p> |
 |---------|---------|
