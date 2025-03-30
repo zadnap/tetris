@@ -1,4 +1,11 @@
 #include "../include/game.h"
+#include "../include/inputHandler.h"
+#include "../include/userInterface.h"
+#include "../include/utils.h"
+#include "../include/colors.h"
+#include <chrono>
+#include <cmath>
+#include <raylib.h>
 
 const int LOCK_DELAY = 500;
 steady_clock::time_point lockTimer;
@@ -18,6 +25,39 @@ void Game::startNew()
     tetrominoes = getTetrominoes();
     currentTetromino = getRandomTetromino();
     nextTetromino = getRandomTetromino();
+}
+
+void Game::runGameLoop()
+{
+    InputHandler inputHandler(*this);
+    UserInterface userInterface(*this);
+
+    double lastUpdateOnMovingDown = GetTime();
+    userInterface.initWindow();
+
+    while (!WindowShouldClose())
+    {
+        BeginDrawing();
+        ClearBackground(BACKGROUND_COLOR);
+        userInterface.drawMainScreen();
+
+        if (isGameOver())
+        {
+            userInterface.drawGameMenu();
+            inputHandler.handleGameMenu();
+        }
+        else
+        {
+            if (hasElapsedTime(0.8 * pow(0.85, getLevel()), lastUpdateOnMovingDown))
+                moveTetrominoDown();
+
+            inputHandler.handleMovement();
+        }
+
+        EndDrawing();
+    }
+
+    CloseWindow();
 }
 
 bool Game::isGameOver()

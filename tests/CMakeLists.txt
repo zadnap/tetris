@@ -17,12 +17,11 @@ add_executable(tetromino_test
 target_link_libraries(tetromino_test PRIVATE GTest::gtest_main)
 gtest_discover_tests(tetromino_test)
 
+file(GLOB_RECURSE SOURCES ${CMAKE_SOURCE_DIR}/src/*.cpp)
+list(FILTER SOURCES EXCLUDE REGEX ".*main\\.cpp$")
 add_executable(game_integration_test 
     game_integration_test.cpp 
-    ${CMAKE_SOURCE_DIR}/src/game.cpp 
-    ${CMAKE_SOURCE_DIR}/src/board.cpp 
-    ${CMAKE_SOURCE_DIR}/src/position.cpp
-    ${CMAKE_SOURCE_DIR}/src/tetromino.cpp
+    ${SOURCES}
 )
-target_link_libraries(game_integration_test PRIVATE GTest::gtest_main)
+target_link_libraries(game_integration_test PRIVATE GTest::gtest_main raylib glfw winmm)
 gtest_discover_tests(game_integration_test)

@@ -30,6 +30,7 @@ private:
 
 public:
     Game();
+    void runGameLoop();
     bool isGameOver();
     int getScore();
     int getLevel();
