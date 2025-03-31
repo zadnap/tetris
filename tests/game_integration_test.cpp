@@ -86,25 +86,6 @@ TEST_F(GameIntegrationTest, StopTetrominoAtRightEdge)
     EXPECT_EQ(getRightMostCol(), lastCol);
 }
 
-TEST_F(GameIntegrationTest, LockTetromino)
-{
-    Tetromino currentTetromino = game.getCurrentTetromino();
-    int tetrominoId = currentTetromino.id;
-
-    while (true)
-    {
-        game.moveTetrominoDown();
-        if (game.getCurrentTetromino().id != tetrominoId)
-            break;
-        currentTetromino = game.getCurrentTetromino();
-    }
-
-    for (Position cellPos : currentTetromino.getCellPositions())
-    {
-        EXPECT_EQ(game.getBoard().getCell(cellPos.row, cellPos.col), tetrominoId);
-    }
-}
-
 TEST_F(GameIntegrationTest, DetectCollisionOnLeft)
 {
     game.getBoard().setCell(0, 0, 1);

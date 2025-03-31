@@ -13,6 +13,8 @@ private:
     int level;
     int totalClearedRows;
     bool gameOver;
+    double lockTimer;
+    static constexpr double LOCK_DELAY = 0.5;
     Board board;
     vector<Tetromino> tetrominoes;
     vector<Tetromino> getTetrominoes();

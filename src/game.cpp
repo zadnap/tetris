@@ -3,12 +3,8 @@
 #include "../include/userInterface.h"
 #include "../include/utils.h"
 #include "../include/colors.h"
-#include <chrono>
 #include <cmath>
 #include <raylib.h>
-
-const int LOCK_DELAY = 500;
-steady_clock::time_point lockTimer;
 
 Game::Game()
 {
@@ -21,6 +17,7 @@ void Game::startNew()
     level = 0;
     totalClearedRows = 0;
     gameOver = false;
+    lockTimer = GetTime();
     board = Board();
     tetrominoes = getTetrominoes();
     currentTetromino = getRandomTetromino();
@@ -145,7 +142,7 @@ void Game::moveTetrominoLeft()
     if (isCurrentTetroOutsideGrid() || isCurrentTetroOverlapping())
         currentTetromino.move(0, 1);
     else
-        lockTimer = steady_clock::now() + milliseconds(LOCK_DELAY);
+        lockTimer = GetTime() + LOCK_DELAY;
 }
 
 void Game::moveTetrominoRight()
@@ -154,7 +151,7 @@ void Game::moveTetrominoRight()
     if (isCurrentTetroOutsideGrid() || isCurrentTetroOverlapping())
         currentTetromino.move(0, -1);
     else
-        lockTimer = steady_clock::now() + milliseconds(LOCK_DELAY);
+        lockTimer = GetTime() + LOCK_DELAY;
 }
 
 void Game::moveTetrominoDown()
@@ -164,7 +161,7 @@ void Game::moveTetrominoDown()
     {
         currentTetromino.move(-1, 0);
 
-        if (steady_clock::now() > lockTimer)
+        if (GetTime() > lockTimer)
             lockTetromino();
     }
 }
@@ -214,7 +211,7 @@ void Game::rotateTetrominoLeft()
     if (!tryWallkick(prevState, currentTetromino.getRotationState()))
         currentTetromino.rotateRight();
     else
-        lockTimer = steady_clock::now() + milliseconds(LOCK_DELAY);
+        lockTimer = GetTime() + LOCK_DELAY;
 }
 
 void Game::rotateTetrominoRight()
@@ -223,7 +220,7 @@ void Game::rotateTetrominoRight()
     if (!tryWallkick(prevState, currentTetromino.getRotationState()))
         currentTetromino.rotateLeft();
     else
-        lockTimer = steady_clock::now() + milliseconds(LOCK_DELAY);
+        lockTimer = GetTime() + LOCK_DELAY;
 }
 
 void Game::lockTetromino()
