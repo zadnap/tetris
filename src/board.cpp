@@ -67,6 +67,7 @@ int Board::clearCompleteRows()
 
     return rowsCleared;
 }
+
 bool Board::isCompleteRow(int row) const
 {
     for (int col = 0; col < numCols; col++)
@@ -74,11 +75,13 @@ bool Board::isCompleteRow(int row) const
             return false;
     return true;
 }
+
 void Board::clearRow(int row)
 {
     for (int col = 0; col < numCols; col++)
         setCell(row, col, 0);
 }
+
 void Board::moveRowsDown(int row, int distance)
 {
     if (row + distance >= numRows)

@@ -2,9 +2,11 @@
 #include "board.h"
 #include "tetromino.h"
 #include "../src/tetrominoes.cpp"
+#include "utils.h"
+#include "colors.h"
+#include <cmath>
+#include <raylib.h>
 #include <random>
-#include <chrono>
-using namespace std::chrono;
 
 class Game
 {
@@ -28,6 +30,7 @@ private:
     void lockTetromino();
     void updateScore(int rowsCleared);
     void updateLevel();
+    void loadNextTetromino();
     void startNew();
 
 public:

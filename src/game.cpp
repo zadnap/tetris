@@ -1,10 +1,4 @@
 #include "../include/game.h"
-#include "../include/inputHandler.h"
-#include "../include/userInterface.h"
-#include "../include/utils.h"
-#include "../include/colors.h"
-#include <cmath>
-#include <raylib.h>
 
 Game::Game()
 {
@@ -22,39 +16,6 @@ void Game::startNew()
     tetrominoes = getTetrominoes();
     currentTetromino = getRandomTetromino();
     nextTetromino = getRandomTetromino();
-}
-
-void Game::runGameLoop()
-{
-    InputHandler inputHandler(*this);
-    UserInterface userInterface(*this);
-
-    double lastUpdateOnMovingDown = GetTime();
-    userInterface.initWindow();
-
-    while (!WindowShouldClose())
-    {
-        BeginDrawing();
-        ClearBackground(BACKGROUND_COLOR);
-        userInterface.drawMainScreen();
-
-        if (isGameOver())
-        {
-            userInterface.drawGameMenu();
-            inputHandler.handleGameMenu();
-        }
-        else
-        {
-            if (hasElapsedTime(0.8 * pow(0.85, getLevel()), lastUpdateOnMovingDown))
-                moveTetrominoDown();
-
-            inputHandler.handleMovement();
-        }
-
-        EndDrawing();
-    }
-
-    CloseWindow();
 }
 
 bool Game::isGameOver()
@@ -75,14 +36,6 @@ int Game::getLevel()
 Board &Game::getBoard()
 {
     return board;
-}
-
-int generateRandomNumber(int min, int max)
-{
-    static random_device rd;
-    static mt19937 gen(rd());
-    uniform_int_distribution<int> dist(min, max);
-    return dist(gen);
 }
 
 Tetromino Game::getRandomTetromino()
@@ -247,7 +200,11 @@ void Game::lockTetromino()
 
     updateScore(rowsCleared);
     updateLevel();
+    loadNextTetromino();
+}
 
+void Game::loadNextTetromino()
+{
     currentTetromino = nextTetromino;
     nextTetromino = getRandomTetromino();
 }

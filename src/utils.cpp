@@ -1,5 +1,4 @@
 #include "../include/utils.h"
-#include <raylib.h>
 
 bool hasElapsedTime(double interval, double &lastUpdateTime)
 {
@@ -10,4 +9,10 @@ bool hasElapsedTime(double interval, double &lastUpdateTime)
         return true;
     }
     return false;
+}
+
+int generateRandomNumber(int min, int max)
+{
+    std::srand(static_cast<unsigned int>(GetTime() * 1000));
+    return min + std::rand() % (max - min + 1);
 }
