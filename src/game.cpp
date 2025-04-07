@@ -164,7 +164,11 @@ void Game::rotateTetrominoLeft()
     if (!tryWallkick(prevState, currentTetromino.getRotationState()))
         currentTetromino.rotateRight();
     else
+    {
         lockTimer = GetTime() + LOCK_DELAY;
+        if (onRotate)
+            onRotate();
+    }
 }
 
 void Game::rotateTetrominoRight()
@@ -173,7 +177,11 @@ void Game::rotateTetrominoRight()
     if (!tryWallkick(prevState, currentTetromino.getRotationState()))
         currentTetromino.rotateLeft();
     else
+    {
         lockTimer = GetTime() + LOCK_DELAY;
+        if (onRotate)
+            onRotate();
+    }
 }
 
 void Game::lockTetromino()
@@ -201,6 +209,11 @@ void Game::lockTetromino()
     updateScore(rowsCleared);
     updateLevel();
     loadNextTetromino();
+
+    if (onPlace)
+        onPlace();
+    if (rowsCleared > 0 && onClear)
+        onClear(rowsCleared);
 }
 
 void Game::loadNextTetromino()

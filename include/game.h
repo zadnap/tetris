@@ -7,6 +7,8 @@
 #include <cmath>
 #include <raylib.h>
 #include <random>
+#include <functional>
+using namespace std;
 
 class Game
 {
@@ -35,7 +37,6 @@ private:
 
 public:
     Game();
-    void runGameLoop();
     bool isGameOver();
     int getScore();
     int getLevel();
@@ -49,4 +50,7 @@ public:
     void rotateTetrominoRight();
     void hardDropTetromino();
     void restart();
+    function<void()> onRotate;
+    function<void()> onPlace;
+    function<void(int)> onClear;
 };
