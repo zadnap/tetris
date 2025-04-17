@@ -29,6 +29,8 @@ Tetris is a classic puzzle game where players stack falling blocks (called tetro
 
 2. **Build system**: [Ninja](https://github.com/ninja-build/ninja/releases)
 
+3. **Windows Installer**: [NSIS](https://nsis.sourceforge.io/Download)
+
 3. **VSCode Extensions**: [C/C++ Extension Pack](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools-extension-pack)
 
 ### Installation & Build
@@ -64,4 +66,10 @@ Tetris is a classic puzzle game where players stack falling blocks (called tetro
 
     ```
     ./out/build/tetris-debug/tetris_main.exe
+    ```
+
+7. **Pack**: Run the following to generate an installer for the game:
+
+    ```
+    cpack --config .\out\build\tetris-debug\CPackConfig.cmake
     ```

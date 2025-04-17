@@ -2,6 +2,8 @@
 #include <raylib.h>
 #include <string>
 #include <unordered_map>
+#include <filesystem>
+namespace fs = std::filesystem;
 using namespace std;
 
 class AudioHandler

@@ -1,5 +1,11 @@
 #include "../include/audioHandler.h"
 
+std::string getAssetPath(const std::string &filename)
+{
+    fs::path basePath = fs::current_path();
+    return (basePath / "assets" / "audio" / filename).string();
+}
+
 AudioHandler::AudioHandler()
 {
     InitAudioDevice();
@@ -16,12 +22,12 @@ AudioHandler::~AudioHandler()
 
 void AudioHandler::loadMusic(const string &name, const string &filepath)
 {
-    musicMap[name] = LoadMusicStream(filepath.c_str());
+    musicMap[name] = LoadMusicStream(getAssetPath(filepath).c_str());
 }
 
 void AudioHandler::loadSound(const string &name, const string &filepath)
 {
-    soundMap[name] = LoadSound(filepath.c_str());
+    soundMap[name] = LoadSound(getAssetPath(filepath).c_str());
 }
 
 void AudioHandler::playBackgroundMusic(const string &name, float volume)
