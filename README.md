@@ -15,8 +15,25 @@ Tetris is a classic puzzle game where players stack falling blocks (called tetro
 5. **Scoring & Levels**: Higher scores for multi-line clears; the game speeds up as levels increase.
 6. **Game Over**: The game ends when the stack reaches the top with no moves left.
 
+## Control
+- **[←]**: Move tetromino left
+- **[→]**: Move tetromino right
+- **[↓]**: Soft drop (move tetromino down faster)
+- **[Z]** : Rotate tetromino counterclockwise
+- **[X]** : Rotate tetromino clockwise
+- **[Space]**: Hard drop (instantly drop tetromino to the bottom)
+- **[Enter]** : Start the game from the start screen and end screen
+- **[Esc]**: Exit the game
+
 ## References
 - The tetromino rotation logic of the game is implemented using the kicktables of [SRS](https://harddrop.com/wiki/SRS) (Super Rotation System)
+- The audio files for sound effects (place, rotate, clear) are from [Minecraft Wiki](https://minecraft.fandom.com/wiki/List_of_block_textures?file=Block_of_Amethyst_%28texture%29_JE3_BE1.png#Elements)
+- Game over sound effect is from [Pixabay](https://pixabay.com/sound-effects/game-over-arcade-6435/)
+- Background music is from [Tetris Theme Song](https://www.youtube.com/watch?v=NmCCQxVBfyM&pp=ygUMdGV0cmlzIHRoZW1l)
+
+## Release
+
+- [Github Releases](https://github.com/zadnap/tetris/releases)
 
 ## Previews
 | <p align="center">Start Screen</p> | <p align="center">Main Screen</p> | <p align="center">End Screen</p> |
