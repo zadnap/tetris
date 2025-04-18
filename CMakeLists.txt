@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.31.5)
-project(tetris VERSION 1.0.1 LANGUAGES C CXX)
+project(tetris VERSION 1.0.0 LANGUAGES C CXX)
 
 include(CPack)
 enable_testing()
