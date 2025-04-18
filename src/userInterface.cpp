@@ -152,7 +152,7 @@ void UserInterface::drawGameMenu()
     int gameMenuLabelWidth = MeasureText(gameMenuLabel.c_str(), fontSize * 2);
     DrawText(gameMenuLabel.c_str(), (windowWidth - gameMenuLabelWidth) / 2, gameOverY, fontSize * 2, TEXT_COLOR);
 
-    string score = "Your Score: " + to_string(game.getScore());
+    string score = "Final Score: " + to_string(game.getScore());
     int scoreWidth = MeasureText(score.c_str(), fontSize);
     DrawText(score.c_str(), (windowWidth - scoreWidth) / 2, gameOverY + textSpace * 2, fontSize, GOLD);
 

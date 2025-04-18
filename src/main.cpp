@@ -13,12 +13,12 @@ int main()
     double lastUpdateOnMovingDown = GetTime();
     userInterface.initWindow();
 
-    audioHandler.loadMusic("background", "background-music.mp3");
-    audioHandler.loadSound("rotate", "rotating-sound.ogg");
-    audioHandler.loadSound("place", "placing-sound.ogg");
-    audioHandler.loadSound("clear", "clearing-sound.ogg");
+    audioHandler.loadMusic("background", "background.mp3");
+    audioHandler.loadSound("gameOver", "game-over.mp3");
+    audioHandler.loadSound("rotate", "rotate.ogg");
+    audioHandler.loadSound("place", "place.ogg");
+    audioHandler.loadSound("clear", "clear.ogg");
 
-    audioHandler.playBackgroundMusic("background", 0.3f);
     game.onRotate = [&]()
     { audioHandler.playSoundEffect("rotate", 3.0f); };
     game.onPlace = [&]()
