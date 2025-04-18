@@ -19,9 +19,9 @@ Tetris is a classic puzzle game where players stack falling blocks (called tetro
 - The tetromino rotation logic of the game is implemented using the kicktables of [SRS](https://harddrop.com/wiki/SRS) (Super Rotation System)
 
 ## Previews
-| <p align="center">Main Screen</p> | <p align="center">End Screen</p> |
-|---------|---------|
-| ![game main screen](./previews/main-screen.png) | ![game end screen](./previews/end-screen.png) |
+| <p align="center">Start Screen</p> | <p align="center">Main Screen</p> | <p align="center">End Screen</p> |
+|---------|---------|---------|
+|![game start screen](./previews/start-screen.png) | ![game main screen](./previews/main-screen.png) | ![game end screen](./previews/end-screen.png) | 
 
 ## Development
 ### Prerequisites

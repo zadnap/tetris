@@ -42,7 +42,10 @@ void AudioHandler::playBackgroundMusic(const string &name, float volume)
 
 void AudioHandler::stopBackgroundMusic()
 {
-    StopMusicStream(*currentMusic);
+    if (currentMusic)
+    {
+        StopMusicStream(*currentMusic);
+    }
 }
 
 void AudioHandler::playSoundEffect(const string &name, float volume)

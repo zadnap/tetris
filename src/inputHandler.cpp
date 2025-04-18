@@ -35,8 +35,8 @@ void InputHandler::handleGameMenu()
 
     switch (keyPressed)
     {
-    case KEY_R:
-        game.restart();
+    case KEY_ENTER:
+        game.startNew();
         break;
     }
 }
