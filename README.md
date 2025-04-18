@@ -27,7 +27,7 @@ Tetris is a classic puzzle game where players stack falling blocks (called tetro
 
 ## References
 - The tetromino rotation logic of the game is implemented using the kicktables of [SRS](https://harddrop.com/wiki/SRS) (Super Rotation System)
-- The audio files for sound effects (place, rotate, clear) are from [Minecraft Wiki](https://minecraft.fandom.com/wiki/List_of_block_textures?file=Block_of_Amethyst_%28texture%29_JE3_BE1.png#Elements)
+- The audio files for sound effects (place, rotate, clear) are from [Minecraft Wiki](https://minecraft.fandom.com/wiki/Category:Block_sounds)
 - Game over sound effect is from [Pixabay](https://pixabay.com/sound-effects/game-over-arcade-6435/)
 - Background music is from [Tetris Theme Song](https://www.youtube.com/watch?v=NmCCQxVBfyM&pp=ygUMdGV0cmlzIHRoZW1l)
 
