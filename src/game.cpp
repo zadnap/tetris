@@ -1,26 +1,23 @@
 #include "../include/game.h"
 
-Game::Game()
-{
-    startNew();
-}
-
 void Game::startNew()
 {
     score = 0;
     level = 0;
     totalClearedRows = 0;
-    gameOver = false;
+    state = GameState::Playing;
     lockTimer = GetTime();
     board = Board();
     tetrominoes = getTetrominoes();
     currentTetromino = getRandomTetromino();
     nextTetromino = getRandomTetromino();
+    if (onStart)
+        onStart();
 }
 
-bool Game::isGameOver()
+GameState Game::getState()
 {
-    return gameOver;
+    return state;
 }
 
 int Game::getScore()
@@ -191,7 +188,7 @@ void Game::lockTetromino()
     {
         if (!board.isWithinBounds(cellPos.row, cellPos.col) || !board.canPlace(cellPos.row, cellPos.col))
         {
-            gameOver = true;
+            endGame();
             return;
         }
         board.setCell(cellPos.row, cellPos.col, currentTetromino.id);
@@ -199,7 +196,7 @@ void Game::lockTetromino()
 
     if (board.isFull())
     {
-        gameOver = true;
+        endGame();
         return;
     }
 
@@ -214,6 +211,37 @@ void Game::lockTetromino()
         onPlace();
     if (rowsCleared > 0 && onClear)
         onClear(rowsCleared);
+}
+
+void Game::endGame()
+{
+    state = GameState::GameOver;
+    if (score > getHighScore())
+        saveHighScore(score);
+    if (onEnd)
+        onEnd();
+}
+
+void Game::ensureSaveFolder()
+{
+    std::filesystem::create_directory("saves");
+}
+
+void Game::saveHighScore(int score)
+{
+    ensureSaveFolder();
+    std::ofstream outFile("saves/highscore.txt");
+    if (outFile)
+        outFile << score;
+}
+
+int Game::getHighScore()
+{
+    std::ifstream inFile("saves/highscore.txt");
+    int score = 0;
+    if (inFile)
+        inFile >> score;
+    return score;
 }
 
 void Game::loadNextTetromino()
@@ -258,9 +286,4 @@ void Game::updateScore(int rowsCleared)
 void Game::updateLevel()
 {
     level = totalClearedRows / 10;
-}
-
-void Game::restart()
-{
-    startNew();
 }

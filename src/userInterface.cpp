@@ -141,22 +141,19 @@ void UserInterface::drawNextTetromino()
     }
 }
 
-void UserInterface::drawGameMenu()
+void UserInterface::drawGameMenu(string label, vector<string> text)
 {
     DrawRectangle(0, 0, windowWidth, windowHeight, OVERLAY_COLOR);
 
     float textSpace = 30;
     float gameOverY = (windowHeight - 4 * fontSize - 4 * textSpace) / 2;
 
-    string gameMenuLabel = "BOOYAH!";
-    int gameMenuLabelWidth = MeasureText(gameMenuLabel.c_str(), fontSize * 2);
-    DrawText(gameMenuLabel.c_str(), (windowWidth - gameMenuLabelWidth) / 2, gameOverY, fontSize * 2, TEXT_COLOR);
+    int labelWidth = MeasureText(label.c_str(), fontSize * 2);
+    DrawText(label.c_str(), (windowWidth - labelWidth) / 2, gameOverY, fontSize * 2, TEXT_COLOR);
 
-    string score = "Final Score: " + to_string(game.getScore());
-    int scoreWidth = MeasureText(score.c_str(), fontSize);
-    DrawText(score.c_str(), (windowWidth - scoreWidth) / 2, gameOverY + textSpace * 2, fontSize, GOLD);
-
-    string askToRestart = "Restart [R]";
-    int askToRestartWidth = MeasureText(askToRestart.c_str(), fontSize);
-    DrawText(askToRestart.c_str(), (windowWidth - askToRestartWidth) / 2, gameOverY + textSpace * 3, fontSize, GREEN);
+    for (size_t i = 0; i < text.size(); i++)
+    {
+        int textWidth = MeasureText(text[i].c_str(), fontSize);
+        DrawText(text[i].c_str(), (windowWidth - textWidth) / 2, gameOverY + textSpace * (i + 2), fontSize, GOLD);
+    }
 }

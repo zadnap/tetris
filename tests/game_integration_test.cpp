@@ -7,6 +7,7 @@ protected:
     void SetUp() override
     {
         game = Game();
+        game.startNew();
     }
 
     Game game;
@@ -48,9 +49,9 @@ protected:
     }
 };
 
-TEST_F(GameIntegrationTest, Initialize)
+TEST_F(GameIntegrationTest, StartNew)
 {
-    EXPECT_FALSE(game.isGameOver());
+    EXPECT_EQ(game.getState(), GameState::Playing);
     EXPECT_EQ(game.getScore(), 0);
     EXPECT_EQ(game.getLevel(), 0);
     EXPECT_GE(game.getCurrentTetromino().id, 0);
@@ -278,17 +279,5 @@ TEST_F(GameIntegrationTest, DetectGameOver)
 
     game.hardDropTetromino();
 
-    EXPECT_TRUE(game.isGameOver());
-}
-
-TEST_F(GameIntegrationTest, Restart)
-{
-    game.restart();
-    EXPECT_FALSE(game.isGameOver());
-    EXPECT_EQ(game.getScore(), 0);
-    EXPECT_EQ(game.getLevel(), 0);
-    EXPECT_GE(game.getCurrentTetromino().id, 0);
-    EXPECT_LE(game.getCurrentTetromino().id, 7);
-    EXPECT_GE(game.getNextTetromino().id, 0);
-    EXPECT_LE(game.getNextTetromino().id, 7);
+    EXPECT_EQ(game.getState(), GameState::GameOver);
 }

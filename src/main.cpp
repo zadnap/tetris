@@ -19,10 +19,17 @@ int main()
     audioHandler.loadSound("place", "place.ogg");
     audioHandler.loadSound("clear", "clear.ogg");
 
+    game.onStart = [&]()
+    { audioHandler.playBackgroundMusic("background", 0.3f); };
+    game.onEnd = [&]()
+    {
+        audioHandler.stopBackgroundMusic();
+        audioHandler.playSoundEffect("gameOver", 3.0f);
+    };
     game.onRotate = [&]()
-    { audioHandler.playSoundEffect("rotate", 3.0f); };
+    { audioHandler.playSoundEffect("rotate", 2.0f); };
     game.onPlace = [&]()
-    { audioHandler.playSoundEffect("place", 6.0f); };
+    { audioHandler.playSoundEffect("place", 4.0f); };
     game.onClear = [&](int clearedRows)
     { audioHandler.playSoundEffect("clear", clearedRows * 2.0f); };
 
@@ -33,15 +40,21 @@ int main()
         BeginDrawing();
 
         ClearBackground(BACKGROUND_COLOR);
-        userInterface.drawMainScreen();
 
-        if (game.isGameOver())
+        if (game.getState() == GameState::NotStarted)
         {
-            userInterface.drawGameMenu();
+            userInterface.drawGameMenu("TETRIS", {"High Score: " + to_string(game.getHighScore()), "Start [Enter]"});
+            inputHandler.handleGameMenu();
+        }
+        else if (game.getState() == GameState::GameOver)
+        {
+            userInterface.drawMainScreen();
+            userInterface.drawGameMenu("BOOYAH!", {"Final Score: " + to_string(game.getScore()), "High Score: " + to_string(game.getHighScore()), "Restart [Enter]"});
             inputHandler.handleGameMenu();
         }
         else
         {
+            userInterface.drawMainScreen();
             double droppingSpeed = 0.8 * pow(0.85, game.getLevel());
             if (hasElapsedTime(droppingSpeed, lastUpdateOnMovingDown))
                 game.moveTetrominoDown();
