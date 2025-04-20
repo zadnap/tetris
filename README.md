@@ -56,13 +56,13 @@ Tetris is a classic puzzle game where players stack falling blocks (called tetro
 3. **Configure CMake** : Run the following command to create a CMake configuration: 
 
     ```
-    cmake --preset tetris-debug
+    make config
     ```
 
 4. **Build**: Run Ninja to compile the project: 
 
     ```
-    ninja -C out/build/tetris-debug
+    make build
     ```
 
 5. **Test**: Once the build is complete, run the following: 
@@ -70,23 +70,23 @@ Tetris is a classic puzzle game where players stack falling blocks (called tetro
     Run all tests:
 
     ```
-    ctest --test-dir ./out/build/tetris-debug/tests
+    make test
     ```
 
     Run specific test: (e.g., `BoardTest`, `TetrominoTest`):
 
     ```
-    ctest --test-dir ./out/build/tetris-debug/tests -R <TestName>
+    make test_one TEST_NAME=<TestName>
     ```
 
 6. **Run**: Once the build is complete, run the following to see the project in action:
 
     ```
-    ./out/build/tetris-debug/tetris_main.exe
+    make run
     ```
 
 7. **Pack**: Run the following to generate an installer for the game:
 
     ```
-    cpack --config .\out\build\tetris-debug\CPackConfig.cmake
+    make pack
     ```
