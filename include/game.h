@@ -24,6 +24,7 @@ private:
     int score;
     int level;
     int totalClearedRows;
+    int fps;
     GameState state = GameState::NotStarted;
     double lockTimer;
     static constexpr double LOCK_DELAY = 0.5;
@@ -33,6 +34,8 @@ private:
     Tetromino currentTetromino;
     Tetromino nextTetromino;
     Tetromino getRandomTetromino();
+    const vector<int> framesPerCell = {
+        48, 43, 38, 33, 28, 23, 18, 13, 8, 6, 5, 5, 5, 4, 4, 4, 3, 3, 3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1};
     bool isCurrentTetroOutsideGrid();
     bool isCurrentTetroOverlapping();
     int getKickIndex(int from, int to);
@@ -47,6 +50,7 @@ private:
 
 public:
     void startNew();
+    int getFPS();
     GameState getState();
     int getScore();
     int getLevel();
@@ -60,6 +64,7 @@ public:
     void rotateTetrominoRight();
     void hardDropTetromino();
     int getHighScore();
+    double getDropSpeed();
     function<void()> onRotate;
     function<void()> onPlace;
     function<void(int)> onClear;

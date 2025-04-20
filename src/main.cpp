@@ -9,9 +9,7 @@ int main()
     InputHandler inputHandler(game);
     UserInterface userInterface(game);
     AudioHandler audioHandler;
-
     double lastUpdateOnMovingDown = GetTime();
-    userInterface.initWindow();
 
     audioHandler.loadMusic("background", "background.mp3");
     audioHandler.loadSound("gameOver", "game-over.mp3");
@@ -33,6 +31,7 @@ int main()
     game.onClear = [&](int clearedRows)
     { audioHandler.playSoundEffect("clear", clearedRows * 2.0f); };
 
+    userInterface.initWindow();
     while (!WindowShouldClose())
     {
         audioHandler.update();
@@ -55,8 +54,8 @@ int main()
         else
         {
             userInterface.drawMainScreen();
-            double droppingSpeed = 0.8 * pow(0.85, game.getLevel());
-            if (hasElapsedTime(droppingSpeed, lastUpdateOnMovingDown))
+
+            if (hasElapsedTime(game.getDropSpeed(), lastUpdateOnMovingDown))
                 game.moveTetrominoDown();
 
             inputHandler.handleMovement();

@@ -4,13 +4,12 @@
 class GameIntegrationTest : public ::testing::Test
 {
 protected:
+    Game game;
+
     void SetUp() override
     {
-        game = Game();
         game.startNew();
     }
-
-    Game game;
 
     int getLeftMostCol()
     {

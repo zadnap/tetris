@@ -2,6 +2,7 @@
 
 void Game::startNew()
 {
+    fps = 60;
     score = 0;
     level = 0;
     totalClearedRows = 0;
@@ -13,6 +14,11 @@ void Game::startNew()
     nextTetromino = getRandomTetromino();
     if (onStart)
         onStart();
+}
+
+int Game::getFPS()
+{
+    return fps;
 }
 
 GameState Game::getState()
@@ -285,5 +291,10 @@ void Game::updateScore(int rowsCleared)
 
 void Game::updateLevel()
 {
-    level = totalClearedRows / 10;
+    level = min(totalClearedRows / 10, 28);
+}
+
+double Game::getDropSpeed()
+{
+    return (double)framesPerCell[level] / fps;
 }

@@ -21,7 +21,7 @@ void UserInterface::initWindow()
     windowHeight = gridHeight + margin * 2;
 
     InitWindow(windowWidth, windowHeight, "Tetris");
-    SetTargetFPS(60);
+    SetTargetFPS(game.getFPS());
 }
 
 void UserInterface::drawMainScreen()
