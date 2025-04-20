@@ -1,6 +1,6 @@
 .PHONY: all configure build test run pack clean
 
-all: configure build
+all: config build
 
 config:
 	@echo "🔧 Running configuration with CMake..."
