@@ -33,3 +33,4 @@ pack:
 clean:
 	@echo "🧹 Cleaning up build output..."
 	rd /s /q out\ || rm -rf out/
+	rd /s /q saves\ || rm -rf saves/
