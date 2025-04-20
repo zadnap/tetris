@@ -15,16 +15,6 @@ Tetris is a classic puzzle game where players stack falling blocks (called tetro
 5. **Scoring & Levels**: Higher scores for multi-line clears; the game speeds up as levels increase.
 6. **Game Over**: The game ends when the stack reaches the top with no moves left.
 
-## Control
-- **[←]**: Move tetromino left
-- **[→]**: Move tetromino right
-- **[↓]**: Soft drop (move tetromino down faster)
-- **[Z]** : Rotate tetromino counterclockwise
-- **[X]** : Rotate tetromino clockwise
-- **[Space]**: Hard drop (instantly drop tetromino to the bottom)
-- **[Enter]** : Start the game from the start screen and end screen
-- **[Esc]**: Exit the game
-
 ## References
 - The tetromino rotation logic of the game is implemented using the kicktables of [SRS](https://harddrop.com/wiki/SRS) (Super Rotation System)
 - The audio files for sound effects (place, rotate, clear) are from [Minecraft Wiki](https://minecraft.fandom.com/wiki/Category:Block_sounds)
