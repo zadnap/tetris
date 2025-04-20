@@ -1,34 +1,20 @@
 ## About
-This project is a simple Tetris game developed as part of the Advanced Programming Course (Course Code: 2425II_INT2215_7) at VNU-UET. The primary goal of this project is to gain hands-on experience in software development, utilizing programming languages and their libraries, while also practicing code modularization and refactoring.
+### Project
+This project is a simple [Tetris](https://en.wikipedia.org/wiki/Tetris) game developed as part of the Advanced Programming Course (Course Code: 2425II_INT2215_7) at VNU-UET. The primary goal of this project is to gain hands-on experience in software development, utilizing programming languages and their libraries, while also practicing code modularization and refactoring.
 
-## Author
+### Author
 Nguyen Ba Hoang Minh (Student ID: 24021568)
 
-## What is Tetris?
-Tetris is a classic puzzle game where players stack falling blocks (called tetrominoes) to create complete horizontal lines. For more background information, visit [Tetris - Wikipedia](https://en.wikipedia.org/wiki/Tetris).
-
-## Rules
-1. **Objective**: Clear lines by arranging falling tetrominoes. The game ends if blocks reach the top.
-2. **Tetrominoes**: Seven different shapes (I, O, T, L, J, S, Z) made of four squares.
-3. **Movement**: Players can move left, right, rotate, soft drop (faster descent), or hard drop (instant place).
-4. **Clearing Lines**: Full rows disappear, earning points; clearing multiple lines gives more points.
-5. **Scoring & Levels**: Higher scores for multi-line clears; the game speeds up as levels increase.
-6. **Game Over**: The game ends when the stack reaches the top with no moves left.
-
-## References
-- The tetromino rotation logic of the game is implemented using the kicktables of [SRS](https://harddrop.com/wiki/SRS) (Super Rotation System)
-- The audio files for sound effects (place, rotate, clear) are from [Minecraft Wiki](https://minecraft.fandom.com/wiki/Category:Block_sounds)
-- Game over sound effect is from [Pixabay](https://pixabay.com/sound-effects/game-over-arcade-6435/)
-- Background music is from [Tetris Theme Song](https://www.youtube.com/watch?v=NmCCQxVBfyM&pp=ygUMdGV0cmlzIHRoZW1l)
-
-## Release
-
-- [Github Releases](https://github.com/zadnap/tetris/releases)
-
-## Previews
+### Previews
 | <p align="center">Start Screen</p> | <p align="center">Main Screen</p> | <p align="center">End Screen</p> |
 |---------|---------|---------|
 |![game start screen](./previews/start-screen.png) | ![game main screen](./previews/main-screen.png) | ![game end screen](./previews/end-screen.png) | 
+
+### References
+- Tetromino rotation logic: [Super Rotation System](https://harddrop.com/wiki/SRS)
+- Block sound effects: [Minecraft Wiki](https://minecraft.fandom.com/wiki/Category:Block_sounds)
+- Gameover sound effect: [Pixabay](https://pixabay.com/sound-effects/game-over-arcade-6435/)
+- Background music: [Tetris Theme Song](https://www.youtube.com/watch?v=NmCCQxVBfyM&pp=ygUMdGV0cmlzIHRoZW1l)
 
 ## Development
 ### Prerequisites
@@ -80,3 +66,7 @@ Tetris is a classic puzzle game where players stack falling blocks (called tetro
     ```
     make pack
     ```
+
+## Release
+
+- Checkout the latest version at [Github Releases](https://github.com/zadnap/tetris/releases)
