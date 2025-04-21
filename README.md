@@ -12,6 +12,7 @@ Nguyen Ba Hoang Minh (Student ID: 24021568)
 
 ### References
 - Drop speed: [Tetris (NES)](https://tetris.wiki/Tetris_(NES))
+- Key hold movement: [DAS](https://tetris.wiki/DAS)
 - Tetromino rotation logic: [Super Rotation System](https://harddrop.com/wiki/SRS)
 - Block sound effects: [Minecraft Wiki](https://minecraft.fandom.com/wiki/Category:Block_sounds)
 - Gameover sound effect: [Pixabay](https://pixabay.com/sound-effects/game-over-arcade-6435/)
