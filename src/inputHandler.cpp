@@ -91,5 +91,7 @@ void InputHandler::handleGameMenu(string type)
     {
         if (keyPressed == KEY_C)
             game.resumeGame();
+        if (keyPressed == KEY_R)
+            game.startGame();
     }
 }

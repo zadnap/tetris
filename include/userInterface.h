@@ -27,6 +27,6 @@ private:
 public:
     UserInterface(Game &game);
     void initWindow();
-    void drawGameMenu(string label, vector<string> text);
+    void drawGameMenu(string label, vector<string> text1, vector<string> text2);
     void drawMainScreen();
 };

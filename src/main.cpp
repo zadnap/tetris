@@ -46,19 +46,19 @@ int main()
 
         if (game.getState() == GameState::NotStarted)
         {
-            userInterface.drawGameMenu("TETRIS", {"High Score: " + to_string(game.getHighScore()), "Start [S]"});
+            userInterface.drawGameMenu("TETRIS", {"High Score: " + to_string(game.getHighScore())}, {"Start [S]"});
             inputHandler.handleGameMenu("start");
         }
         else if (game.getState() == GameState::Paused)
         {
             userInterface.drawMainScreen();
-            userInterface.drawGameMenu("TETRIS", {"Score: " + to_string(game.getScore()), "Continue [C]"});
+            userInterface.drawGameMenu("TETRIS", {"Score: " + to_string(game.getScore())}, {"Continue [C]", "Restart [R]"});
             inputHandler.handleGameMenu("pause");
         }
         else if (game.getState() == GameState::GameOver)
         {
             userInterface.drawMainScreen();
-            userInterface.drawGameMenu("BOOYAH!", {"Final Score: " + to_string(game.getScore()), "High Score: " + to_string(game.getHighScore()), "Restart [R]"});
+            userInterface.drawGameMenu("BOOYAH!", {"Final Score: " + to_string(game.getScore()), "High Score: " + to_string(game.getHighScore())}, {"Restart [R]"});
             inputHandler.handleGameMenu("end");
         }
         else

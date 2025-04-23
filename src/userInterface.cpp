@@ -146,7 +146,7 @@ void UserInterface::drawNextTetromino()
     }
 }
 
-void UserInterface::drawGameMenu(string label, vector<string> text)
+void UserInterface::drawGameMenu(string label, vector<string> text1, vector<string> text2)
 {
     DrawRectangle(0, 0, windowWidth, windowHeight, OVERLAY_COLOR);
 
@@ -157,19 +157,16 @@ void UserInterface::drawGameMenu(string label, vector<string> text)
     int labelWidth = MeasureText(label.c_str(), fontSize * 2);
     DrawText(label.c_str(), (windowWidth - labelWidth) / 2, gameOverY, fontSize * 2, HEADING_COLOR);
 
-    for (size_t i = 0; i < text.size(); i++)
+    for (size_t i = 0; i < text1.size(); i++)
     {
-        int textWidth = MeasureText(text[i].c_str(), fontSize);
-        Color textColor = TEXT_COLOR;
-        double space = textSpace * (i + 2);
+        int textWidth = MeasureText(text1[i].c_str(), fontSize);
+        DrawText(text1[i].c_str(), (windowWidth - textWidth) / 2, gameOverY + textPadding + textSpace * (i + 2), fontSize, TEXT_COLOR);
+    }
 
-        if (i == text.size() - 1)
-        {
-            space += textPadding;
-            textColor = BUTTON_COLOR;
-        }
-
-        DrawText(text[i].c_str(), (windowWidth - textWidth) / 2, gameOverY + textPadding + space, fontSize, textColor);
+    for (size_t i = 0; i < text2.size(); i++)
+    {
+        int textWidth = MeasureText(text2[i].c_str(), fontSize);
+        DrawText(text2[i].c_str(), (windowWidth - textWidth) / 2, gameOverY + fontSize * text1.size() + textPadding * 4 + textSpace * (i + 2), fontSize, BUTTON_COLOR);
     }
 }
 
