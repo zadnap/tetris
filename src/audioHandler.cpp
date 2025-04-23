@@ -48,6 +48,22 @@ void AudioHandler::stopBackgroundMusic()
     }
 }
 
+void AudioHandler::pauseBackgroundMusic()
+{
+    if (currentMusic)
+    {
+        PauseMusicStream(*currentMusic);
+    }
+}
+
+void AudioHandler::resumeBackgroundMusic()
+{
+    if (currentMusic)
+    {
+        ResumeMusicStream(*currentMusic);
+    }
+}
+
 void AudioHandler::playSoundEffect(const string &name, float volume)
 {
     if (soundMap.find(name) != soundMap.end())

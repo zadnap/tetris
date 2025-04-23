@@ -31,6 +31,7 @@ void UserInterface::drawMainScreen()
     drawTextBlock(gridWidth + margin * 2, margin, "Score", to_string(game.getScore()));
     drawTextBlock(gridWidth + margin * 2, margin * 1.5 + textBlockHeight, "Level", to_string(game.getLevel()));
     drawNextTetromino();
+    drawPauseText();
 }
 
 void UserInterface::drawGrid()
@@ -165,4 +166,11 @@ void UserInterface::drawGameMenu(string label, vector<string> text)
 
         DrawText(text[i].c_str(), (windowWidth - textWidth) / 2, gameOverY + blockPadding + space, fontSize, textColor);
     }
+}
+
+void UserInterface::drawPauseText()
+{
+    const char *text = "Pause [P]";
+    int textWidth = MeasureText(text, fontSize);
+    DrawText(text, windowWidth - textWidth - margin, windowHeight - fontSize - margin, fontSize, TEXT_COLOR);
 }

@@ -19,6 +19,10 @@ int main()
 
     game.onStart = [&]()
     { audioHandler.playBackgroundMusic("background", 0.3f); };
+    game.onPause = [&]()
+    { audioHandler.pauseBackgroundMusic(); };
+    game.onResume = [&]()
+    { audioHandler.resumeBackgroundMusic(); };
     game.onEnd = [&]()
     {
         audioHandler.stopBackgroundMusic();
@@ -42,14 +46,20 @@ int main()
 
         if (game.getState() == GameState::NotStarted)
         {
-            userInterface.drawGameMenu("TETRIS", {"High Score: " + to_string(game.getHighScore()), "Start [Enter]"});
-            inputHandler.handleGameMenu();
+            userInterface.drawGameMenu("TETRIS", {"High Score: " + to_string(game.getHighScore()), "Start [S]"});
+            inputHandler.handleGameMenu("start");
+        }
+        else if (game.getState() == GameState::Paused)
+        {
+            userInterface.drawMainScreen();
+            userInterface.drawGameMenu("TETRIS", {"Score: " + to_string(game.getScore()), "Continue [C]"});
+            inputHandler.handleGameMenu("pause");
         }
         else if (game.getState() == GameState::GameOver)
         {
             userInterface.drawMainScreen();
-            userInterface.drawGameMenu("BOOYAH!", {"Final Score: " + to_string(game.getScore()), "High Score: " + to_string(game.getHighScore()), "Restart [Enter]"});
-            inputHandler.handleGameMenu();
+            userInterface.drawGameMenu("BOOYAH!", {"Final Score: " + to_string(game.getScore()), "High Score: " + to_string(game.getHighScore()), "Restart [R]"});
+            inputHandler.handleGameMenu("end");
         }
         else
         {
@@ -58,7 +68,7 @@ int main()
             if (hasElapsedTime(game.getDropSpeed(), lastUpdateOnMovingDown))
                 game.moveTetrominoDown();
 
-            inputHandler.handleMovement();
+            inputHandler.handleGamePlay();
         }
 
         EndDrawing();

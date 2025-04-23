@@ -13,6 +13,8 @@ public:
     ~AudioHandler();
     void playBackgroundMusic(const string &name, float volume = 1.0f);
     void stopBackgroundMusic();
+    void pauseBackgroundMusic();
+    void resumeBackgroundMusic();
     void playSoundEffect(const string &name, float volume = 1.0f);
     void update();
     void loadMusic(const string &name, const string &filepath);

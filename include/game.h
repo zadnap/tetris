@@ -15,6 +15,7 @@ enum class GameState
 {
     NotStarted,
     Playing,
+    Paused,
     GameOver
 };
 
@@ -49,7 +50,9 @@ private:
     void saveHighScore(int score);
 
 public:
-    void startNew();
+    void startGame();
+    void pauseGame();
+    void resumeGame();
     int getFPS();
     GameState getState();
     int getScore();
@@ -70,4 +73,6 @@ public:
     function<void(int)> onClear;
     function<void()> onStart;
     function<void()> onEnd;
+    function<void()> onPause;
+    function<void()> onResume;
 };

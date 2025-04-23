@@ -8,7 +8,7 @@ protected:
 
     void SetUp() override
     {
-        game.startNew();
+        game.startGame();
     }
 
     int getLeftMostCol()
@@ -48,7 +48,7 @@ protected:
     }
 };
 
-TEST_F(GameIntegrationTest, StartNew)
+TEST_F(GameIntegrationTest, StartGame)
 {
     EXPECT_EQ(game.getState(), GameState::Playing);
     EXPECT_EQ(game.getScore(), 0);
@@ -57,6 +57,14 @@ TEST_F(GameIntegrationTest, StartNew)
     EXPECT_LE(game.getCurrentTetromino().id, 7);
     EXPECT_GE(game.getNextTetromino().id, 0);
     EXPECT_LE(game.getNextTetromino().id, 7);
+}
+
+TEST_F(GameIntegrationTest, PauseGame)
+{
+    game.pauseGame();
+    EXPECT_EQ(game.getState(), GameState::Paused);
+    game.resumeGame();
+    EXPECT_EQ(game.getState(), GameState::Playing);
 }
 
 TEST_F(GameIntegrationTest, StopTetrominoAtLeftEdge)

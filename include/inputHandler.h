@@ -15,9 +15,10 @@ private:
 
     void handleNormalMovement();
     void handleDasMovement(int direction, bool isVertical);
+    void handlePausing();
 
 public:
     InputHandler(Game &game);
-    void handleMovement();
-    void handleGameMenu();
+    void handleGamePlay();
+    void handleGameMenu(string type);
 };

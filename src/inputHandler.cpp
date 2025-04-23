@@ -9,12 +9,19 @@ InputHandler::InputHandler(Game &game) : game(game)
     keyPressStartTime = 0.0;
 }
 
-void InputHandler::handleMovement()
+void InputHandler::handleGamePlay()
 {
+    handlePausing();
     handleNormalMovement();
     handleDasMovement(-1, false);
     handleDasMovement(1, false);
     handleDasMovement(1, true);
+}
+
+void InputHandler::handlePausing()
+{
+    if (IsKeyPressed(KEY_P))
+        game.pauseGame();
 }
 
 void InputHandler::handleNormalMovement()
@@ -66,14 +73,23 @@ void InputHandler::handleDasMovement(int direction, bool isVertical = false)
     }
 }
 
-void InputHandler::handleGameMenu()
+void InputHandler::handleGameMenu(string type)
 {
     int keyPressed = GetKeyPressed();
 
-    switch (keyPressed)
+    if (type == "start")
     {
-    case KEY_ENTER:
-        game.startNew();
-        break;
+        if (keyPressed == KEY_S)
+            game.startGame();
+    }
+    else if (type == "end")
+    {
+        if (keyPressed == KEY_R)
+            game.startGame();
+    }
+    else if (type == "pause")
+    {
+        if (keyPressed == KEY_C)
+            game.resumeGame();
     }
 }

@@ -1,6 +1,6 @@
 #include "../include/game.h"
 
-void Game::startNew()
+void Game::startGame()
 {
     fps = 60;
     score = 0;
@@ -14,6 +14,20 @@ void Game::startNew()
     nextTetromino = getRandomTetromino();
     if (onStart)
         onStart();
+}
+
+void Game::pauseGame()
+{
+    state = GameState::Paused;
+    if (onPause)
+        onPause();
+}
+
+void Game::resumeGame()
+{
+    state = GameState::Playing;
+    if (onResume)
+        onResume();
 }
 
 int Game::getFPS()

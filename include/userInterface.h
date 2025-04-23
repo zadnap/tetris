@@ -22,6 +22,7 @@ private:
     void drawCurrentTetromino();
     void drawTextBlock(float offsetX, float offsetY, string label, string content);
     void drawNextTetromino();
+    void drawPauseText();
 
 public:
     UserInterface(Game &game);
