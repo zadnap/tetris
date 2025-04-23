@@ -6,9 +6,8 @@ This project is a simple [Tetris](https://en.wikipedia.org/wiki/Tetris) game dev
 Nguyen Ba Hoang Minh (Student ID: 24021568)
 
 ### Previews
-| <p align="center">Start Screen</p> | <p align="center">Main Screen</p> | <p align="center">End Screen</p> |
-|---------|---------|---------|
-|![game start screen](./previews/start-screen.png) | ![game main screen](./previews/main-screen.png) | ![game end screen](./previews/end-screen.png) | 
+| ![game end screen](./previews/end-screen.png) | ![game main screen](./previews/main-screen.png) | 
+|------|------|
 
 ### References
 - Drop speed: [Tetris (NES)](https://tetris.wiki/Tetris_(NES))
