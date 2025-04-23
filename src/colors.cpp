@@ -1,5 +1,7 @@
 #include "../include/colors.h"
 
+const Color HEADING_COLOR = {8, 255, 255, 255};
+const Color BUTTON_COLOR = {8, 255, 8, 255};
 const Color TEXT_COLOR = {255, 255, 255, 255};
 const Color BACKGROUND_COLOR = {33, 48, 89, 255};
 const Color OVERLAY_COLOR = {0, 0, 0, 200};

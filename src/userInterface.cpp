@@ -149,11 +149,20 @@ void UserInterface::drawGameMenu(string label, vector<string> text)
     float gameOverY = (windowHeight - 4 * fontSize - 4 * textSpace) / 2;
 
     int labelWidth = MeasureText(label.c_str(), fontSize * 2);
-    DrawText(label.c_str(), (windowWidth - labelWidth) / 2, gameOverY, fontSize * 2, TEXT_COLOR);
+    DrawText(label.c_str(), (windowWidth - labelWidth) / 2, gameOverY, fontSize * 2, HEADING_COLOR);
 
     for (size_t i = 0; i < text.size(); i++)
     {
         int textWidth = MeasureText(text[i].c_str(), fontSize);
-        DrawText(text[i].c_str(), (windowWidth - textWidth) / 2, gameOverY + textSpace * (i + 2), fontSize, GOLD);
+        Color textColor = TEXT_COLOR;
+        double space = textSpace * (i + 2);
+
+        if (i == text.size() - 1)
+        {
+            space = textSpace * (i + 3);
+            textColor = BUTTON_COLOR;
+        }
+
+        DrawText(text[i].c_str(), (windowWidth - textWidth) / 2, gameOverY + blockPadding + space, fontSize, textColor);
     }
 }

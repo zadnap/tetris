@@ -3,6 +3,8 @@
 #include <vector>
 using namespace std;
 
+extern const Color HEADING_COLOR;
+extern const Color BUTTON_COLOR;
 extern const Color TEXT_COLOR;
 extern const Color BACKGROUND_COLOR;
 extern const Color OVERLAY_COLOR;

@@ -25,9 +25,9 @@ int main()
         audioHandler.playSoundEffect("gameOver", 3.0f);
     };
     game.onRotate = [&]()
-    { audioHandler.playSoundEffect("rotate", 2.0f); };
+    { audioHandler.playSoundEffect("rotate", 0.5f); };
     game.onPlace = [&]()
-    { audioHandler.playSoundEffect("place", 4.0f); };
+    { audioHandler.playSoundEffect("place", 2.0f); };
     game.onClear = [&](int clearedRows)
     { audioHandler.playSoundEffect("clear", clearedRows * 2.0f); };
 
