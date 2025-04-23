@@ -22,6 +22,10 @@ void UserInterface::initWindow()
 
     InitWindow(windowWidth, windowHeight, "Tetris");
     SetTargetFPS(game.getFPS());
+
+    Image icon = LoadImage("assets/icon/icon.png");
+    SetWindowIcon(icon);
+    UnloadImage(icon);
 }
 
 void UserInterface::drawMainScreen()
@@ -147,6 +151,7 @@ void UserInterface::drawGameMenu(string label, vector<string> text)
     DrawRectangle(0, 0, windowWidth, windowHeight, OVERLAY_COLOR);
 
     float textSpace = 30;
+    float textPadding = 10;
     float gameOverY = (windowHeight - 4 * fontSize - 4 * textSpace) / 2;
 
     int labelWidth = MeasureText(label.c_str(), fontSize * 2);
@@ -160,11 +165,11 @@ void UserInterface::drawGameMenu(string label, vector<string> text)
 
         if (i == text.size() - 1)
         {
-            space = textSpace * (i + 3);
+            space += textPadding;
             textColor = BUTTON_COLOR;
         }
 
-        DrawText(text[i].c_str(), (windowWidth - textWidth) / 2, gameOverY + blockPadding + space, fontSize, textColor);
+        DrawText(text[i].c_str(), (windowWidth - textWidth) / 2, gameOverY + textPadding + space, fontSize, textColor);
     }
 }
 
