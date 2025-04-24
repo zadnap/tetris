@@ -22,6 +22,11 @@ include(CTest)
 
 include_directories(include)
 
+if(MINGW)
+    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -static-libgcc -static")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -static-libgcc -static-libstdc++ -static")
+endif()
+
 find_package(raylib CONFIG REQUIRED)
 find_package(glfw3 CONFIG REQUIRED)
 file(GLOB SOURCES "src/*.cpp")
