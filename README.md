@@ -4,7 +4,7 @@ This project is a simple [Tetris](https://en.wikipedia.org/wiki/Tetris) game dev
 
 ## Release
 
-- Checkout the latest version at [Github Releases](https://github.com/zadnap/tetris/releases)
+Checkout the latest version at [Github Releases](https://github.com/zadnap/tetris/releases)
 
 ### Author
 Nguyen Ba Hoang Minh (Student ID: 24021568)
