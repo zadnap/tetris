@@ -2,7 +2,7 @@
 ### Project
 This project is a simple [Tetris](https://en.wikipedia.org/wiki/Tetris) game developed as part of the Advanced Programming Course (Course Code: 2425II_INT2215_7) at VNU-UET. The primary goal of this project is to gain hands-on experience in software development, utilizing programming languages and their libraries, while also practicing code modularization and refactoring.
 
-## Release
+### Release
 
 Checkout the latest version at [Github Releases](https://github.com/zadnap/tetris/releases)
 
